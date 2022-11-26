@@ -1,0 +1,1 @@
+Amazena as sprites do jogo
