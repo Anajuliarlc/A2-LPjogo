@@ -1,0 +1,1 @@
+Armazena as classes para o funcionamento do jogo
