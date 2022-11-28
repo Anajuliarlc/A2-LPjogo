@@ -12,4 +12,4 @@ class Jogo():
     
     def iniciar(self):
         """Inicia o jogo"""
-        self.telas.tela_inicial.iniciar()
+        self.telas.iniciar()
