@@ -1,4 +1,5 @@
 from tela import Tela
+from personagem import Personagem
 import pygame as pg
 
 class TelaNivel(Tela):
@@ -15,6 +16,11 @@ class TelaNivel(Tela):
         :type imagem_fundo: str
         """             
         super().__init__(titulo, icone, imagem_fundo)
+        self.personagem = Personagem([800, 0], 100, self.largura, self.altura, 10,
+                                    "niveis/tilesets/personagem_provisorio.png",
+                                    "niveis/tilesets/anya_provisorio_c.png",
+                                    "niveis/tilesets/anya_provisorio_e.png",
+                                    "niveis/tilesets/anya_provisorio_d.png",)
 
     def iniciar(self):
         """Inicia um nível"""
@@ -39,19 +45,37 @@ class TelaNivel(Tela):
             teclas = dict()
             teclas[0] = keys[pg.K_o]
             teclas[1] = keys[pg.K_i]
+            teclas[2] = keys[pg.K_w]
+            teclas[3] = keys[pg.K_a]
+            teclas[4] = keys[pg.K_s]
+            teclas[5] = keys[pg.K_d]
 
+            #Acessar outras telas
             if teclas[0]:
                 return "Configuracoes"
             
             elif teclas[1]:
                 return "Inventario"
 
+            #Movimentação do personagem
+            if teclas[2]:
+                self.personagem.mover("cima")
+            elif teclas[4]:
+                self.personagem.mover("baixo")
+
+            if teclas[3]:
+                self.personagem.mover("esquerda")
+            elif teclas[5]:
+                self.personagem.mover("direita")
+            
+            #Forçar fechar a janela
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     return "Sair"
 
             #Cor de fundo
-            screen.fill((0, 0, 0))
+            screen.fill((255, 0, 0))
+            self.personagem.atualizar_personagem(screen)
             pg.display.update()
 
             clock.tick(self.fps)
