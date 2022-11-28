@@ -1,7 +1,7 @@
 import pygame as pg
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
-class Tela():
+class Tela(ABC):
     """Objeto abstrato de uma tela do jogo"""
 
     def __init__(self, titulo, icone, imagem_fundo): 
