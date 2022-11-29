@@ -1,0 +1,134 @@
+{
+    "activeFile": "níveis/quarto0.tmx",
+    "expandedProjectPaths": [
+        ".",
+        "níveis",
+        "níveis/tiled_set"
+    ],
+    "fileStates": {
+        "Anya.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "camas.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/camas - Copia-Copia.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/camas - Copia.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/camas.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/gastly.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/gastlygif.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/interior free.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/items4x.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/marshadow-gen7.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/marshadow.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/mimikyu.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/newtile7 - Copia.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/newtile7.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/quarto0.tmx": {
+            "scale": 1.3237132352941174,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 273.4731287321206,
+                "y": 342.21913623107906
+            }
+        },
+        "níveis/quarto0.tmx#camas - Copia": {
+            "scaleInDock": 1
+        },
+        "níveis/quarto0.tmx#newtile7": {
+            "scaleInDock": 1
+        },
+        "níveis/spritesheet.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/tiled_set/Anya.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/tiled_set/camas.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/tiled_set/pokemon_tiled_set.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/tiled_set/roupas.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "pokemon_set.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "roupas.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/níveis/tiled_set/images",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "níveis/quarto0.tmx",
+        "níveis/mimikyu.tsx",
+        "níveis/marshadow.tsx",
+        "níveis/gastly.tsx",
+        "níveis/gastlygif.tsx"
+    ],
+    "project": "QuartoAnya.tiled-project",
+    "recentFiles": [
+        "níveis/quarto0.tmx",
+        "níveis/gastlygif.tsx",
+        "níveis/gastly.tsx",
+        "níveis/marshadow.tsx",
+        "níveis/mimikyu.tsx",
+        "níveis/items4x.tsx",
+        "níveis/marshadow-gen7.tsx",
+        "níveis/interior free.tsx",
+        "níveis/newtile7 - Copia.tsx",
+        "níveis/camas - Copia.tsx",
+        "níveis/newtile7.tsx",
+        "níveis/camas.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}

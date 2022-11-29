@@ -1,0 +1,148 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "níveis/newtile7 - Copia.tsx",
+    "expandedProjectPaths": [
+        ".",
+        "níveis"
+    ],
+    "file.lastUsedOpenFilter": "Todos os Arquivos (*)",
+    "fileStates": {
+        "adventure-guide.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "air-mail.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "bloom-mail.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "camas.tsx": {
+            "scaleInEditor": 1
+        },
+        "cracked-pot.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "endorsement.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "free_overview.tsx": {
+            "scaleInEditor": 1
+        },
+        "galarica-wreath.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "gastly.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "heart-scale.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "kings-rock.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "leaf-stone.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "love-sweet.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "newtile7.tsx": {
+            "scaleInEditor": 1
+        },
+        "níveis/camas.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/gastly.tsx": {
+            "scaleInDock": 1
+        },
+        "níveis/mimikyu.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/newtile7 - Copia.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/newtile7.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "níveis/quarto0.tmx": {
+            "scale": 1.244895833333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 271.5086603631496,
+                "y": 168.28717262153796
+            }
+        },
+        "níveis/quarto0.tmx#camas - Copia": {
+            "scaleInDock": 1
+        },
+        "níveis/quarto0.tmx#newtile7": {
+            "scaleInDock": 1
+        },
+        "pearl.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "poke-doll.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "pokemon_set.tsx": {
+            "scaleInDock": 1
+        },
+        "protector.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "rule-book.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "shoal-shell.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/níveis/tiled_set/images/Modern tiles_Free",
+    "map.height": 40,
+    "map.lastUsedFormat": "tmx",
+    "map.width": 40,
+    "openFiles": [
+        "níveis/newtile7.tsx",
+        "níveis/newtile7 - Copia.tsx",
+        "níveis/mimikyu.tsx"
+    ],
+    "project": "QuartoAnya1.tiled-project",
+    "recentFiles": [
+        "níveis/camas.tsx",
+        "níveis/mimikyu.tsx",
+        "níveis/newtile7 - Copia.tsx",
+        "níveis/newtile7.tsx",
+        "níveis/quarto0.tmx",
+        "galarica-wreath.tsx",
+        "shoal-shell.tsx",
+        "rule-book.tsx",
+        "protector.tsx",
+        "poke-doll.tsx",
+        "pearl.tsx",
+        "love-sweet.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
