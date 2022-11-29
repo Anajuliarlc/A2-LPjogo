@@ -34,11 +34,11 @@ class Lanterna():
         """Retorna a altura da tela"""
         return self.__altura_tela
     
-    def apagar_mapa(self, mapa):
+    def apagar_mapa(self, mapa: pg.Surface):
         """Apaga a parte não visível do mapa
 
         :param mapa: Mapa a ser escurecido
-        :type mapa: Mapa
+        :type mapa: TelaNivel
         """
         # Cria uma superfície preta
         escuridao = pg.Surface((self.largura_tela, self.altura_tela))
@@ -46,7 +46,7 @@ class Lanterna():
         # Cria um círculo branco
         pg.draw.circle(escuridao, (255, 255, 255),
                          self.posicao, self.raio_lanterna, 0)
-        # Aplica a máscara
+        # Aplica a máscara no circulo branco
         escuridao.set_colorkey((255, 255, 255))
         mapa.blit(escuridao, (0, 0))
 

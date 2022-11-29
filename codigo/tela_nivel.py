@@ -16,11 +16,12 @@ class TelaNivel(Tela):
         :type imagem_fundo: str
         """             
         super().__init__(titulo, icone, imagem_fundo)
-        self.personagem = Personagem([800, 0], 100, self.largura, self.altura, 10,
+        self.personagem = Personagem([0, 0], 100, self.largura, self.altura, 10,
                                     "niveis/tilesets/personagem_provisorio.png",
                                     "niveis/tilesets/anya_provisorio_c.png",
                                     "niveis/tilesets/anya_provisorio_e.png",
-                                    "niveis/tilesets/anya_provisorio_d.png",)
+                                    "niveis/tilesets/anya_provisorio_d.png",
+                                    100)
 
     def iniciar(self):
         """Inicia um nível"""
