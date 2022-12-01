@@ -1,1 +1,0 @@
-Armazena as informações dos diferentes níveis
