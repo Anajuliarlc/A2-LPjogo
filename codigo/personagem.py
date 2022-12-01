@@ -1,5 +1,6 @@
 from lanterna import Lanterna
 from medrometro import Medrometro
+from lista_controles import ListaControles
 import pygame as pg
 
 class Personagem():
@@ -96,16 +97,16 @@ class Personagem():
         :param direcao: Direção para a qual o personagem deve se mover
         :type direcao: str
         """
-        if direcao == "cima" and self.posicao[1] >= self.velocidade:
+        if direcao == ListaControles.cima.name and self.posicao[1] >= self.velocidade:
             self.posicao[1] -= self.velocidade
             self.imagem_atual = self.imagem_costas
-        elif direcao == "baixo" and self.posicao[1] <= self.altura_tela - self.velocidade:
+        elif direcao == ListaControles.baixo.name and self.posicao[1] <= self.altura_tela - self.velocidade:
             self.posicao[1] += self.velocidade
             self.imagem_atual = self.imagem_frente
-        if direcao == "esquerda" and self.posicao[0] >= self.velocidade:
+        if direcao == ListaControles.esquerda.name and self.posicao[0] >= self.velocidade:
             self.posicao[0] -= self.velocidade
             self.imagem_atual = self.imagem_esquerda
-        elif direcao == "direita" and self.posicao[0] <= self.largura_tela - self.velocidade:
+        elif direcao == ListaControles.direita.name and self.posicao[0] <= self.largura_tela - self.velocidade:
             self.posicao[0] += self.velocidade
             self.imagem_atual = self.imagem_direita
 
