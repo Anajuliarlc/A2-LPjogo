@@ -1,22 +1,40 @@
 import pygame as pg
 from tela import Tela
 from botao import Botao
+from lista_controles import ListaControles
+from lista_retornos import ListaRetornos
 
 
 class TelaMenu(Tela):
     """Classe que organiza o menu do jogo"""
 
-    def __init__(self, titulo, icone, imagem_fundo):
+    def __init__(self, titulo, icone):
         """ Cria a tela do menu
 
         :param titulo: Título da tela
         :type titulo: str
         :param icone: Caminho de acesso do ícone da tela em png
         :type icone: str
-        :param imagem_fundo: Caminho de acesso da imagem de fundo
-        :type imagem_fundo: str
         """
-        super().__init__(titulo, icone, imagem_fundo)
+        super().__init__(titulo, icone)
+
+    def controles(self):
+        """Verifica os inputs do usuário e define os controles dessa tela
+
+        :return: Retorna um dicionário com o nome do controle como chave e True ou False como valor
+        :rtype: dict
+        """
+        # Verficia os inputs do usuário
+        pg.event.pump()
+        pressionados = pg.key.get_pressed()
+
+        # Define os controles dessa tela
+        teclas = dict()
+        teclas[ListaControles.cima.name] = pressionados[ListaControles.cima.value]
+        teclas[ListaControles.baixo.name] = pressionados[ListaControles.baixo.value]
+        teclas[ListaControles.enter.name] = pressionados[ListaControles.enter.value]
+
+        return teclas
 
     def iniciar(self):
         screen = pg.display.set_mode((self.largura, self.altura))
@@ -27,7 +45,7 @@ class TelaMenu(Tela):
         # Coloca o icone na tela
         icone = pg.image.load(self.icone)
         pg.display.set_icon(icone)
-        anya = pg.image.load("niveis/tilesets/anyaar.png").convert()
+        anya = pg.image.load("niveis/personagem/anyaar.png").convert()
         anya2 = pg.transform.scale(anya, (300, 249))
 
         # Tempo de atualização da tela
@@ -62,33 +80,27 @@ class TelaMenu(Tela):
             botao_opcoes.desenhar_botao(screen)
             nome_jogo.desenhar_botao(screen)
 
-            pg.event.pump()
-            keys = pg.key.get_pressed()
+            teclas = self.controles()
 
-            teclas = dict()
-            teclas[0] = keys[pg.K_w]
-            teclas[1] = keys[pg.K_s]
-            teclas[2] = keys[pg.K_RETURN]
-
-            if teclas[0] == True and botao_selecionado > 0:
+            if teclas[ListaControles.cima.name] == True and botao_selecionado > 0:
                 dicionario_botoes[botao_selecionado].definir_cor_fundo(
                     (239, 216, 237))
                 botao_selecionado -= 1
                 clock.tick(8)
 
-            elif teclas[1] == True and botao_selecionado < 2:
+            elif teclas[ListaControles.baixo.name] == True and botao_selecionado < 2:
                 dicionario_botoes[botao_selecionado].definir_cor_fundo(
                     (239, 216, 237))
                 botao_selecionado += 1
                 clock.tick(8)
 
-            elif teclas[2] == True:
+            elif teclas[ListaControles.enter.name] == True:
                 if botao_selecionado == 0:
-                    return "jogar"  # Return para tela de jogo
+                    return ListaRetornos.nivel.name  # Return para tela de jogo
                 elif botao_selecionado == 1:
-                    return "sair"  # Return para sair do jogo
+                    return ListaRetornos.sair.name  # Return para sair do jogo
                 elif botao_selecionado == 2:
-                    return "opções"  # Return para tela de opções
+                    return ListaRetornos.opcoes.name   # Return para tela de opções
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
@@ -98,9 +110,3 @@ class TelaMenu(Tela):
             pg.display.update()
 
             clock.tick(self.fps)
-
-
-resposta = TelaMenu("Menu", "niveis/tilesets/anya_provisorio_c.png",
-                    "niveis/tilesets/anya_provisorio_c.png").iniciar()
-
-print(resposta)
