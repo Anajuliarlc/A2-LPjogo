@@ -8,10 +8,10 @@ class Telas():
     """
     def __init__(self):
         """Organiza as telas que serão exibidas durante o jogo"""
-        self.__tela_inicial = TelaNivel("Tela_inicial", "niveis/tilesets/personagem_provisorio.png", "imagens/fundo.png")
-        self.__nivel = TelaNivel("Nível 0", "niveis/tilesets/personagem_provisorio.png", "imagens/fundo.png")
-        self.__configuracoes = TelaNivel("Configuracoes", "niveis/tilesets/personagem_provisorio.png", "imagens/fundo.png")
-        self.__inventario = TelaNivel("Inventario", "niveis/tilesets/personagem_provisorio.png", "imagens/fundo.png")
+        self.__tela_inicial = TelaNivel("Tela_inicial", "niveis/personagem/personagem_provisorio.png", "imagens/fundo.png")
+        self.__nivel = TelaNivel("Nível 0", "niveis/personagem/personagem_provisorio.png", "imagens/fundo.png")
+        self.__configuracoes = TelaNivel("Configuracoes", "niveis/personagem/personagem_provisorio.png", "imagens/fundo.png")
+        self.__inventario = TelaNivel("Inventario", "niveis/personagem/personagem_provisorio.png", "imagens/fundo.png")
         self._tela_atual = self.tela_inicial
 
     @property
