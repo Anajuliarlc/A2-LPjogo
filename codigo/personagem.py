@@ -48,7 +48,7 @@ class Personagem():
                                          1, largura_tela, altura_tela)
         self.__lanterna = Lanterna(posicao, raio_lanterna,
                                      largura_tela, altura_tela)
-        self.imagem_atual = self.imagem_frente
+        self.imagem_atual = pg.image.load(self.imagem_frente)
         self.limite_x = limite_x
         self.limite_y = limite_y
     
@@ -82,6 +82,14 @@ class Personagem():
         """Retorna a lanterna do personagem"""
         return self.__lanterna
 
+    def definir_sprite(self, imagem):
+        """Define o sprite do personagem
+        
+        :param imagem: Caminho da imagem do sprite
+        :type imagem: str
+        """
+        self.imagem_atual = pg.image.load(imagem).convert_alpha()
+
     def mover(self, direcao: str):
         """Move o personagem
 
@@ -90,16 +98,16 @@ class Personagem():
         """
         if direcao == ListaControles.cima.name and self.posicao[1] >= self.velocidade:
             self.posicao[1] -= self.velocidade
-            self.imagem_atual = self.imagem_costas
+            self.definir_sprite(self.imagem_costas)
         elif direcao == ListaControles.baixo.name and self.posicao[1] <= self.limite_y - self.velocidade:
             self.posicao[1] += self.velocidade
-            self.imagem_atual = self.imagem_frente
+            self.definir_sprite(self.imagem_frente)
         if direcao == ListaControles.esquerda.name and self.posicao[0] >= self.velocidade:
             self.posicao[0] -= self.velocidade
-            self.imagem_atual = self.imagem_esquerda
+            self.definir_sprite(self.imagem_esquerda)
         elif direcao == ListaControles.direita.name and self.posicao[0] <= self.limite_x - self.velocidade:
             self.posicao[0] += self.velocidade
-            self.imagem_atual = self.imagem_direita
+            self.definir_sprite(self.imagem_direita)
 
     def atualizar_personagem(self, mapa: pg.display):
         """Atualiza a posição do personagem
@@ -108,8 +116,7 @@ class Personagem():
         :type tela: pg.display
         """
         self.lanterna.apagar_mapa(mapa)
-        imagem = pg.image.load(self.imagem_atual)
-        posicao_centralizada = (self.posicao[0] - imagem.get_width() // 2,
-                                 self.posicao[1] - imagem.get_height() // 2)
-        mapa.blit(imagem, posicao_centralizada)
+        posicao_centralizada = (self.posicao[0] - self.imagem_atual.get_width() // 2,
+                                 self.posicao[1] - self.imagem_atual.get_height() // 2)
+        mapa.blit(self.imagem_atual, posicao_centralizada)
         self.medrometro.atualizar_medrometro(mapa)

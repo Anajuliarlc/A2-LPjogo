@@ -66,8 +66,7 @@ class TelaNivel(Tela):
         #Tempo de atualização da tela
         relogio = pg.time.Clock()
 
-        self.mapa.carregar_csvs()
-        self.mapa.criar_grupos_sprites()
+        self.mapa.carregar_mapa()
 
         # Loop principal
         continuar = True
@@ -83,6 +82,8 @@ class TelaNivel(Tela):
                 return ListaRetornos.inventario.name
 
             #Movimentação do personagem
+            print(self.mapa.inimigos.verificar_colisao(self.personagem))
+
             if teclas[ListaControles.cima.name]:
                 self.personagem.mover(ListaControles.cima.name)
             elif teclas[ListaControles.baixo.name]:
