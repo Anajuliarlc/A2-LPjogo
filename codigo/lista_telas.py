@@ -5,7 +5,7 @@ from enum import Enum
 
 class ListaTelas(Enum):
     """Enumeração de telas do jogo"""
-    tela_inicial = TelaMenu("Menu", "niveis/personagem/anya_provisorio_c.png")
-    tela_opcoes = TelaNivel("Opções", "niveis/personagem/personagem_provisorio.png")
-    tela_inventario = TelaNivel("Inventario", "niveis/personagem/personagem_provisorio.png")
-    tela_nivel = TelaNivel("Nivel 1", "niveis/personagem/personagem_provisorio.png")
+    tela_inicial = TelaMenu("Menu", "niveis/personagem/personagem_c.png")
+    tela_opcoes = TelaNivel("Opções", "niveis/personagem/personagem_c.png")
+    tela_inventario = TelaNivel("Inventario", "niveis/personagem/personagem_c.png")
+    tela_nivel = TelaNivel("Nivel 1", "niveis/personagem/personagem_c.png")

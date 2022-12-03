@@ -14,9 +14,9 @@ class Tela(ABC):
         """             
         self.__titulo = titulo
         self.__icone = icone
-        #32 é o tamanho padrão de um tile e temos 22 tiles na tela
-        self.__altura = 704
-        self.__largura = 1200
+        #32 é o tamanho padrão de um tile e temos 24 tiles na tela
+        self.__altura = 768
+        self.__largura = 1280
         self.__fps = 30
 
     @property

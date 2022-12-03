@@ -22,12 +22,12 @@ class TelaNivel(Tela):
         :type icone: str
         """             
         super().__init__(titulo, icone)
-        self.personagem = Personagem([0, 0], 64, self.largura, self.altura, 5,
-                                    "niveis/personagem/personagem_provisorio.png",
-                                    "niveis/personagem/anya_provisorio_c.png",
-                                    "niveis/personagem/anya_provisorio_e.png",
-                                    "niveis/personagem/anya_provisorio_d.png",
-                                    100)
+        self.personagem = Personagem([0, 0], 32, self.largura, self.altura, 5,
+                                    "niveis/personagem/personagem_f.png",
+                                    "niveis/personagem/personagem_c.png",
+                                    "niveis/personagem/personagem_e.png",
+                                    "niveis/personagem/personagem_d.png",
+                                    100, 960, 704)
         self.mapa = Mapa(ListaTilesets1, 32)
 
     def controles(self):
