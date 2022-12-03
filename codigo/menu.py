@@ -45,6 +45,8 @@ class TelaMenu(Tela):
         # Coloca o icone na tela
         icone = pg.image.load(self.icone)
         pg.display.set_icon(icone)
+
+        # Coloca a imagem da Anya na tela de menu
         anya = pg.image.load("niveis/personagem/anyaar.png").convert()
         anya2 = pg.transform.scale(anya, (300, 249))
 
@@ -91,7 +93,6 @@ class TelaMenu(Tela):
                 botao_selecionado -= 1
                 tenta = pg.mixer.Sound("sons/menuclickmus.mp3")
                 tenta.play()
-
                 clock.tick(8)
 
             elif teclas[ListaControles.baixo.name] == True and botao_selecionado < 2:
