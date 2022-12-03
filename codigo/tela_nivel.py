@@ -13,7 +13,7 @@ import pygame as pg
 class TelaNivel(Tela):
     """Tela de um nível"""
 
-    def __init__(self, titulo, icone):
+    def __init__(self, titulo: str, icone: str):
         """ Cria a tela de um nível
 
         :param titulo: Título da tela
