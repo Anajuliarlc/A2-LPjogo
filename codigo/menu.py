@@ -66,6 +66,9 @@ class TelaMenu(Tela):
         dicionario_botoes = {0: botao_jogar, 1: botao_sair, 2: botao_opcoes}
 
         botao_selecionado = 0
+        pg.mixer.init()
+        pg.mixer.music.load("sons/menumus.wav")
+        pg.mixer.music.play(-1)
 
         # Loop principal
         running = True
@@ -86,16 +89,24 @@ class TelaMenu(Tela):
                 dicionario_botoes[botao_selecionado].definir_cor_fundo(
                     (239, 216, 237))
                 botao_selecionado -= 1
+                tenta = pg.mixer.Sound("sons/menuclickmus.mp3")
+                tenta.play()
+
                 clock.tick(8)
 
             elif teclas[ListaControles.baixo.name] == True and botao_selecionado < 2:
                 dicionario_botoes[botao_selecionado].definir_cor_fundo(
                     (239, 216, 237))
                 botao_selecionado += 1
+                tenta = pg.mixer.Sound("sons/menuclickmus.mp3")
+                tenta.play()
                 clock.tick(8)
 
             elif teclas[ListaControles.enter.name] == True:
+                tenta = pg.mixer.Sound("sons/menuclickmus.mp3")
+                tenta.play()
                 if botao_selecionado == 0:
+                    pg.mixer.music.stop()
                     return ListaRetornos.nivel.name  # Return para tela de jogo
                 elif botao_selecionado == 1:
                     return ListaRetornos.sair.name  # Return para sair do jogo
@@ -104,9 +115,8 @@ class TelaMenu(Tela):
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    return "Sair"
+                    return ListaRetornos.sair.name
             screen.blit(anya2, (800, 475))
             pg.display.flip()
             pg.display.update()
-
             clock.tick(self.fps)
