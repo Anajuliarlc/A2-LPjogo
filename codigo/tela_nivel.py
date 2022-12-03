@@ -2,12 +2,18 @@ from tela import Tela
 from personagem import Personagem
 from lista_controles import ListaControles
 from lista_retornos import ListaRetornos
+from mapa import Mapa
+
+import sys
+sys.path.append("../")
+from niveis.level_data.nivel1.lista_tilesets_1 import ListaTilesets1
+
 import pygame as pg
 
 class TelaNivel(Tela):
     """Tela de um nível"""
 
-    def __init__(self, titulo, icone):
+    def __init__(self, titulo: str, icone: str):
         """ Cria a tela de um nível
 
         :param titulo: Título da tela
@@ -16,12 +22,13 @@ class TelaNivel(Tela):
         :type icone: str
         """             
         super().__init__(titulo, icone)
-        self.personagem = Personagem([0, 0], 100, self.largura, self.altura, 10,
-                                    "niveis/personagem/personagem_provisorio.png",
-                                    "niveis/personagem/anya_provisorio_c.png",
-                                    "niveis/personagem/anya_provisorio_e.png",
-                                    "niveis/personagem/anya_provisorio_d.png",
-                                    100)
+        self.personagem = Personagem([0, 0], 32, self.largura, self.altura, 5,
+                                    "niveis/personagem/personagem_f.png",
+                                    "niveis/personagem/personagem_c.png",
+                                    "niveis/personagem/personagem_e.png",
+                                    "niveis/personagem/personagem_d.png",
+                                    100, 960, 704)
+        self.mapa = Mapa(ListaTilesets1, 32)
 
     def controles(self):
         """Verifica os inputs do usuário e define os controles dessa tela
@@ -59,6 +66,9 @@ class TelaNivel(Tela):
         #Tempo de atualização da tela
         relogio = pg.time.Clock()
 
+        self.mapa.carregar_csvs()
+        self.mapa.criar_grupos_sprites()
+
         # Loop principal
         continuar = True
         while continuar:
@@ -89,7 +99,8 @@ class TelaNivel(Tela):
                     return ListaRetornos.sair.value
 
             #Cor de fundo
-            tela.fill((255, 0, 0))
+            tela.fill((0, 0, 0))
+            self.mapa.desenhar(tela)
             self.personagem.atualizar_personagem(tela)
             pg.display.update()
 

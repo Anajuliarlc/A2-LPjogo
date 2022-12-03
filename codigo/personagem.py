@@ -7,8 +7,8 @@ class Personagem():
     def __init__(self, posicao: list, raio_lanterna: int, largura_tela: int,
                  altura_tela: int, velocidade: int, imagem_frente: str,
                  imagem_costas: str, imagem_esquerda: str, imagem_direita: str,
-                 medo_maximo: int):
-        """Define as propriedades do personagem
+                 medo_maximo: int, limite_x: int, limite_y: int):
+        """_summary_
 
         :param posicao: Coordenadas do personagem
         :type posicao: list
@@ -20,21 +20,25 @@ class Personagem():
         :type altura_tela: int
         :param velocidade: Velocidade do personagem (pixels/frame)
         :type velocidade: int
-        :param imagem_frente: sprite do personagem de frente
+        :param imagem_frente: Sprite do personagem de frente
         :type imagem_frente: str
-        :param imagem_costas: sprite do personagem de costas
+        :param imagem_costas: Sprite do personagem de costas
         :type imagem_costas: str
-        :param imagem_esquerda: sprite do personagem olhando para esquerda
+        :param imagem_esquerda: Sprite do personagem olhando para esquerda
         :type imagem_esquerda: str
-        :param imagem_direita: sprite do personagem olhando para direita
+        :param imagem_direita: Sprite do personagem olhando para direita
         :type imagem_direita: str
         :param medo_maximo: Nível máximo de medo do personagem (0-100)
         :type medo_maximo: int
-        """                    
+        :param limite_x: Limite horizontal do mapa
+        :type limite_x: int
+        :param limite_y: Limite vertical do mapa
+        :type limite_y: int
+        """                          
         self.posicao = posicao
-        self.__largura_tela = largura_tela
-        self.__altura_tela = altura_tela
-        self.__velocidade = velocidade 
+        self.largura_tela = largura_tela
+        self.altura_tela = altura_tela
+        self.velocidade = velocidade 
         self.__imagem_frente = imagem_frente
         self.__imagem_costas = imagem_costas
         self.__imagem_esquerda = imagem_esquerda
@@ -45,21 +49,8 @@ class Personagem():
         self.__lanterna = Lanterna(posicao, raio_lanterna,
                                      largura_tela, altura_tela)
         self.imagem_atual = self.imagem_frente
-
-    @property
-    def largura_tela(self):
-        """Retorna a largura da tela"""
-        return self.__largura_tela
-
-    @property
-    def altura_tela(self):
-        """Retorna a altura da tela"""
-        return self.__altura_tela
-
-    @property
-    def velocidade(self):
-        """Retorna a velocidade do personagem"""
-        return self.__velocidade
+        self.limite_x = limite_x
+        self.limite_y = limite_y
     
     @property
     def imagem_frente(self):
@@ -100,21 +91,21 @@ class Personagem():
         if direcao == ListaControles.cima.name and self.posicao[1] >= self.velocidade:
             self.posicao[1] -= self.velocidade
             self.imagem_atual = self.imagem_costas
-        elif direcao == ListaControles.baixo.name and self.posicao[1] <= self.altura_tela - self.velocidade:
+        elif direcao == ListaControles.baixo.name and self.posicao[1] <= self.limite_y - self.velocidade:
             self.posicao[1] += self.velocidade
             self.imagem_atual = self.imagem_frente
         if direcao == ListaControles.esquerda.name and self.posicao[0] >= self.velocidade:
             self.posicao[0] -= self.velocidade
             self.imagem_atual = self.imagem_esquerda
-        elif direcao == ListaControles.direita.name and self.posicao[0] <= self.largura_tela - self.velocidade:
+        elif direcao == ListaControles.direita.name and self.posicao[0] <= self.limite_x - self.velocidade:
             self.posicao[0] += self.velocidade
             self.imagem_atual = self.imagem_direita
 
-    def atualizar_personagem(self, mapa):
+    def atualizar_personagem(self, mapa: pg.display):
         """Atualiza a posição do personagem
 
         :param tela: Tela do jogo
-        :type tela: TelaNivel
+        :type tela: pg.display
         """
         self.lanterna.apagar_mapa(mapa)
         imagem = pg.image.load(self.imagem_atual)
