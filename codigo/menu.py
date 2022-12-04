@@ -36,7 +36,7 @@ class TelaMenu(Tela):
 
         return teclas
 
-    def iniciar(self):
+    def iniciar(self, volume_atual):
         """Função que inicia o menu
         """
         # Faz a janela
@@ -79,6 +79,8 @@ class TelaMenu(Tela):
         pg.mixer.init()
         pg.mixer.music.load("sons/menumus.wav")
         pg.mixer.music.play(-1)
+        pg.mixer.music.set_volume(volume_atual)
+        
 
         # Loop principal
         running = True
@@ -105,6 +107,7 @@ class TelaMenu(Tela):
                 botao_selecionado -= 1
                 clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
                 clicksound.play()
+                clicksound.set_volume(volume_atual)
                 clock.tick(7)
 
             elif teclas[ListaControles.baixo.name] == True and botao_selecionado < 2:
