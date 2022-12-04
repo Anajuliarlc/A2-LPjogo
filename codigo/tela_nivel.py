@@ -67,7 +67,7 @@ class TelaNivel(Tela):
         relogio = pg.time.Clock()
 
         self.mapa.carregar_mapa()
-
+        print(self.mapa.dicionario_sprites)
         # Loop principal
         continuar = True
         while continuar:
@@ -80,29 +80,19 @@ class TelaNivel(Tela):
             
             elif teclas[ListaControles.inventario.name]:
                 return ListaRetornos.inventario.name
-
-            #Movimentação do personagem
-            print(self.mapa.inimigos.verificar_colisao(self.personagem))
-
-            if teclas[ListaControles.cima.name]:
-                self.personagem.mover(ListaControles.cima.name)
-            elif teclas[ListaControles.baixo.name]:
-                self.personagem.mover(ListaControles.baixo.name)
-
-            if teclas[ListaControles.esquerda.name]:
-                self.personagem.mover(ListaControles.esquerda.name)
-            elif teclas[ListaControles.direita.name]:
-                self.personagem.mover(ListaControles.direita.name)
             
             #Sair do jogo
             for evento in pg.event.get():
                 if evento.type == pg.QUIT:
                     return ListaRetornos.sair.value
 
+            #Movimentação do personagem
+            colisao = self.mapa.inimigos.verificar_visualizacao(self.personagem)
+
             #Cor de fundo
             tela.fill((0, 0, 0))
             self.mapa.desenhar(tela)
-            self.personagem.atualizar_personagem(tela)
+            self.personagem.atualizar_personagem(tela, teclas, colisao)
             pg.display.update()
 
             relogio.tick(self.fps)

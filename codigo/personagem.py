@@ -44,7 +44,7 @@ class Personagem():
         self.__imagem_esquerda = imagem_esquerda
         self.__imagem_direita = imagem_direita
 
-        self.__medrometro = Medrometro([800, 600], 100, 200, 0, medo_maximo,
+        self.__medrometro = Medrometro([1150, 100], 600, 100, 0, medo_maximo,
                                          1, largura_tela, altura_tela)
         self.__lanterna = Lanterna(posicao, raio_lanterna,
                                      largura_tela, altura_tela)
@@ -90,33 +90,38 @@ class Personagem():
         """
         self.imagem_atual = pg.image.load(imagem).convert_alpha()
 
-    def mover(self, direcao: str):
+    def mover(self, teclas: dict):
         """Move o personagem
 
-        :param direcao: Direção para a qual o personagem deve se mover
-        :type direcao: str
+        :param teclas: Teclas pressionadas
+        :type teclas: dict
         """
-        if direcao == ListaControles.cima.name and self.posicao[1] >= self.velocidade:
+        if teclas[ListaControles.cima.name] == True and self.posicao[1] >= self.velocidade:
             self.posicao[1] -= self.velocidade
             self.definir_sprite(self.imagem_costas)
-        elif direcao == ListaControles.baixo.name and self.posicao[1] <= self.limite_y - self.velocidade:
+        elif teclas[ListaControles.baixo.name] == True and self.posicao[1] <= self.limite_y - self.velocidade:
             self.posicao[1] += self.velocidade
             self.definir_sprite(self.imagem_frente)
-        if direcao == ListaControles.esquerda.name and self.posicao[0] >= self.velocidade:
+        if teclas[ListaControles.esquerda.name] == True and self.posicao[0] >= self.velocidade:
             self.posicao[0] -= self.velocidade
             self.definir_sprite(self.imagem_esquerda)
-        elif direcao == ListaControles.direita.name and self.posicao[0] <= self.limite_x - self.velocidade:
+        elif teclas[ListaControles.direita.name] == True and self.posicao[0] <= self.limite_x - self.velocidade:
             self.posicao[0] += self.velocidade
             self.definir_sprite(self.imagem_direita)
 
-    def atualizar_personagem(self, mapa: pg.display):
+    def atualizar_personagem(self, mapa: pg.display, teclas: dict, colisao: bool):
         """Atualiza a posição do personagem
 
         :param tela: Tela do jogo
         :type tela: pg.display
+        :param teclas: Teclas pressionadas
+        :type teclas: dict
+        :param colisao: Indica se houve colisão com algum objeto
+        :type colisao: bool
         """
+        self.mover(teclas)
         self.lanterna.apagar_mapa(mapa)
         posicao_centralizada = (self.posicao[0] - self.imagem_atual.get_width() // 2,
                                  self.posicao[1] - self.imagem_atual.get_height() // 2)
         mapa.blit(self.imagem_atual, posicao_centralizada)
-        self.medrometro.atualizar_medrometro(mapa)
+        self.medrometro.atualizar_medrometro(mapa, colisao)
