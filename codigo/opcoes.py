@@ -51,14 +51,14 @@ class TelaOpcoes(Tela):
         nome_tela = Botao(535, 80, 210, 120, (239, 216, 237),
                           "Opções", (0, 0, 0), "Agency FB", 80)
         botao_aumentarvolume = Botao(
-            910, 300, 60, 60, (239, 216, 237), " ", (0, 0, 0), "Agency FB", 45)
+            810, 300, 60, 60, (239, 216, 237), " ", (0, 0, 0), "Agency FB", 45)
         botao_diminuirvolume = Botao(
-            330, 300, 60, 60, (239, 216, 237), " ", (0, 0, 0), "Agency FB", 55)
+            430, 300, 60, 60, (239, 216, 237), " ", (0, 0, 0), "Agency FB", 55)
 
         botao_aumentarsdf = Botao(
-            910, 600, 60, 60, (239, 216, 237), " ", (0, 0, 0), "Agency FB", 45)
+            810, 600, 60, 60, (239, 216, 237), " ", (0, 0, 0), "Agency FB", 45)
         botao_diminuirsdf = Botao(
-            330, 600, 60, 60, (239, 216, 237), " ", (0, 0, 0), "Agency FB", 55)
+            430, 600, 60, 60, (239, 216, 237), " ", (0, 0, 0), "Agency FB", 55)
 
         botao_menu = Botao(100, 100, 160, 60, (239, 216, 237),
                            "Voltar ao menu", (0, 0, 0), "Agency FB", 30)
@@ -78,7 +78,7 @@ class TelaOpcoes(Tela):
                              4: botao_aumentarvolume, 5: botao_aumentarsdf}
 
         botao_selecionado = 0
-
+        pg.mixer.music.set_volume(1)
         running = True
         while running:
 
@@ -90,15 +90,16 @@ class TelaOpcoes(Tela):
             botao_jogo.desenhar_botao(screen)
             botao_menu.desenhar_botao(screen)
             botao_aumentarvolume.desenhar_botao(screen)
-            screen.blit(mais2, (910, 300))
+            screen.blit(mais2, (810, 300))
             botao_diminuirvolume.desenhar_botao(screen)
-            screen.blit(menos2, (330, 300))
+            screen.blit(menos2, (430, 300))
             nome_tela.desenhar_botao(screen)
             botao_aumentarsdf.desenhar_botao(screen)
-            screen.blit(mais2, (910, 600))
+            screen.blit(mais2, (810, 600))
             botao_diminuirsdf.desenhar_botao(screen)
-            screen.blit(menos2, (330, 600))
-
+            screen.blit(menos2, (430, 600))
+            pg.draw.rect(screen, (255, 255, 255), pg.Rect(520, 285, 260, 90))
+            pg.draw.rect(screen, (56, 32, 98), pg.Rect(525, 290, 250, 80))
             pg.mixer.init()
 
             teclas = self.controles()
@@ -126,11 +127,26 @@ class TelaOpcoes(Tela):
                 if botao_selecionado == 0:
                     return ListaRetornos.tela_inicial.value  # Return para tela de jogo
                 elif botao_selecionado == 1:
-                    return ListaRetornos.sair.name  # Return para sair do jogo
+                    # Return para sair do jogo
+                    pg.mixer.music.set_volume(
+                        pg.mixer.music.get_volume() - 0.1)
+                    if pg.mixer.music.get_volume() <= 0.2:
+                        pg.mixer.music.set_volume(0)
                 elif botao_selecionado == 2:
-                    return ListaRetornos.opcoes.name   # Return para tela de opções
+                    # Return para tela de opções
+                    pg.mixer.Sound.set_volume(
+                        pg.mixer.Sound.get_volume() - 0.1)
+                    if pg.mixer.Sound.get_volume() <= 0.2:
+                        pg.mixer.Sound.set_volume(0)
                 elif botao_selecionado == 3:
                     return ListaRetornos.nivel.name
+                elif botao_selecionado == 4:
+                    # Return para sair do jogo
+                    pg.mixer.music.set_volume(
+                        pg.mixer.music.get_volume() + 0.1)
+                elif botao_selecionado == 5:
+                    pg.mixer.Sound.set_volume(
+                        pg.mixer.Sound.get_volume() + 0.1)
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
