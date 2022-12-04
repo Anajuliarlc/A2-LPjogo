@@ -26,7 +26,7 @@ class TelaNivel(Tela):
                                     "niveis/personagem/personagem_c.png",
                                     "niveis/personagem/personagem_e.png",
                                     "niveis/personagem/personagem_d.png",
-                                    100, 1120, 768)
+                                    100, 1120, 768, [100, 150])
         self.mapa = Mapa(ListaTilesets0, 32)
 
     def controles(self):
@@ -101,7 +101,7 @@ class TelaNivel(Tela):
             if visualiza_item == True:
                 self.mapa.inimigos.pegar_item(tela)
                 if teclas[ListaControles.enter.name]:
-                    self.personagem.ponto_retorno = self.personagem.posicao
+                    self.personagem.ponto_retorno = self.personagem.posicao.copy()
                     relogio.tick(7)
                     try:
                         self.mapa.carregar_mapa()
