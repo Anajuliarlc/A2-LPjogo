@@ -36,7 +36,7 @@ class TelaMenu(Tela):
 
         return teclas
 
-    def iniciar(self, volume_atual):
+    def iniciar(self):
         """Função que inicia o menu
         """
         # Faz a janela
@@ -51,7 +51,7 @@ class TelaMenu(Tela):
 
         # Coloca a imagem da Anya na tela de menu
         anya = pg.image.load("niveis/personagem/anyaar.png").convert()
-        anya2 = pg.transform.scale(anya, (300, 249))
+        anya_scale = pg.transform.scale(anya, (300, 249))
 
         # Tempo de atualização da tela
         clock = pg.time.Clock()
@@ -79,8 +79,7 @@ class TelaMenu(Tela):
         pg.mixer.init()
         pg.mixer.music.load("sons/menumus.wav")
         pg.mixer.music.play(-1)
-        pg.mixer.music.set_volume(volume_atual)
-        
+        # pg.mixer.music.set_volume(volume_atual)
 
         # Loop principal
         running = True
@@ -107,7 +106,6 @@ class TelaMenu(Tela):
                 botao_selecionado -= 1
                 clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
                 clicksound.play()
-                clicksound.set_volume(volume_atual)
                 clock.tick(7)
 
             elif teclas[ListaControles.baixo.name] == True and botao_selecionado < 2:
@@ -135,7 +133,7 @@ class TelaMenu(Tela):
                     return ListaRetornos.sair.name
 
             # Cola a imagem da Anya na tela
-            screen.blit(anya2, (950, 513))
+            screen.blit(anya_scale, (950, 513))
 
             # Atualiza a tela
             pg.display.flip()
