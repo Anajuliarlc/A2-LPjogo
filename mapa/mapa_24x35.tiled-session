@@ -1,0 +1,205 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "mapa.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "Todos os Arquivos (*)",
+    "fileStates": {
+        "Arquivos_de_mapa/img_camada_bagunca.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_chao.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_item_0.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_item_1.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_item_2.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_item_3.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_item_4.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_item_5.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_item_6.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_item_7.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_item_8.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_lab_0.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_lab_1.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_lab_2.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_lab_3.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_lab_4.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_lab_5.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_lab_6.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_lab_7.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_lab_8.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_moveis_0.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_moveis_1.tsx": {
+            "scaleInDock": 1
+        },
+        "Arquivos_de_mapa/img_camada_tapete.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/adventure-guide.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/bloom-mail.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/camas.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/cracked-pot.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/endorsement.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/galarica-wreath.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/gastly.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/heart-scale.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/love-sweet.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/níveis/gastly.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/níveis/newtile7.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/níveis/tiled_set/Quarto.tmx": {
+            "scale": 0.439375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 721.4793741109529,
+                "y": 776.1024182076812
+            }
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/níveis/tiled_set/free_overview.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/pearl.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/poke-doll.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/adventure-guide.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/bloom-mail.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/camas.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/cracked-pot.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/endorsement.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/galarica-wreath.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/gastly.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/heart-scale.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/love-sweet.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/níveis/gastly.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/níveis/newtile7.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/níveis/tiled_set/Quarto.tmx": {
+            "scale": 0.46683593749999996,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 641.5530081164754,
+                "y": 641.5530081164756
+            }
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/níveis/tiled_set/free_overview.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/pearl.tsx": {
+            "scaleInDock": 1
+        },
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/poke-doll.tsx": {
+            "scaleInDock": 1
+        },
+        "mapa.tmx": {
+            "scale": 0.7322916666666667,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 589.2460881934566,
+                "y": 307.2546230440967
+            }
+        }
+    },
+    "last.imagePath": "C:/Users/Isas_/OneDrive/Área de Trabalho/Mapa/Arquivos_de_imagem_png",
+    "map.height": 24,
+    "map.lastUsedFormat": "tmx",
+    "map.width": 35,
+    "openFiles": [
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/níveis/tiled_set/Quarto.tmx",
+        "mapa.tmx"
+    ],
+    "project": "mapa_24x35.tiled-project",
+    "recentFiles": [
+        "C:/Users/Isas_/OneDrive/Documentos/GitHub/A2-LPjogo/ProjetoA2LP/níveis/tiled_set/Quarto.tmx",
+        "mapa.tmx",
+        "C:/Users/Isas_/OneDrive/Área de Trabalho/ProjetoA2LP/níveis/tiled_set/Quarto.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
