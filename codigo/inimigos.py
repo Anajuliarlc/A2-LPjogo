@@ -1,12 +1,22 @@
 import pygame as pg
+from personagem import Personagem
 
 class Inimigos():
     def __init__(self, tile_size: int):
+        """Define as propriedades de um grupo de inimigos
+
+        :param tile_size: tamanho dos sprites
+        :type tile_size: int
+        """
         self.tile_size = tile_size
         self.dicionario_inimigos = dict()
 
     def criar_dicionario_inimigos(self, dic_sprites: dict):
-        """Verifica quais sprites são de labirintos de inimigos"""
+        """Verifica quais sprites são de labirintos de inimigos
+
+        :param dic_sprites: dicionário de todas as sprites
+        :type dic_sprites: dict
+        """        
         primeiro = 0
         chaves = list(dic_sprites.keys())
         ultimo_lab = chaves[-1]
@@ -23,8 +33,14 @@ class Inimigos():
         apagar = chaves[0]
         del self.dicionario_inimigos[apagar]
 
-    def verificar_visualizacao(self, personagem):
-        """Verifica se o personagem colidiu com algum inimigo"""
+    def verificar_visualizacao(self, personagem: Personagem):
+        """Verifica se o personagem colidiu com algum inimigo
+
+        :param personagem: Personagem atual
+        :type personagem: Personagem
+        :return: Retorna True se o personagem colidiu com algum inimigo
+        :rtype: bool
+        """        
 
         raio_lanterna = personagem.lanterna.raio_lanterna
         p_centro_x = personagem.posicao[0] + personagem.imagem_atual.get_width() // 2

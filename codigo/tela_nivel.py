@@ -11,10 +11,9 @@ from niveis.level_data.nivel1.lista_tilesets_1 import ListaTilesets1
 import pygame as pg
 
 class TelaNivel(Tela):
-    """Tela de um nível"""
 
     def __init__(self, titulo: str, icone: str):
-        """ Cria a tela de um nível
+        """ Tela de um nível
 
         :param titulo: Título da tela
         :type titulo: str
@@ -22,7 +21,7 @@ class TelaNivel(Tela):
         :type icone: str
         """             
         super().__init__(titulo, icone)
-        self.personagem = Personagem([0, 0], 32, self.largura, self.altura, 5,
+        self.personagem = Personagem([50, 50], 32, self.largura, self.altura, 5,
                                     "niveis/personagem/personagem_f.png",
                                     "niveis/personagem/personagem_c.png",
                                     "niveis/personagem/personagem_e.png",
@@ -67,7 +66,7 @@ class TelaNivel(Tela):
         relogio = pg.time.Clock()
 
         self.mapa.carregar_mapa()
-        print(self.mapa.dicionario_sprites)
+
         # Loop principal
         continuar = True
         while continuar:
@@ -87,12 +86,13 @@ class TelaNivel(Tela):
                     return ListaRetornos.sair.value
 
             #Movimentação do personagem
-            colisao = self.mapa.inimigos.verificar_visualizacao(self.personagem)
+            colisao_inimigo = self.mapa.inimigos.verificar_visualizacao(self.personagem)
+            colisao_objetos = self.mapa.objetos_colisao.verificar_colisao(self.personagem)
 
             #Cor de fundo
             tela.fill((0, 0, 0))
             self.mapa.desenhar(tela)
-            self.personagem.atualizar_personagem(tela, teclas, colisao)
+            self.personagem.atualizar_personagem(tela, teclas, colisao_inimigo, colisao_objetos)
             pg.display.update()
 
             relogio.tick(self.fps)

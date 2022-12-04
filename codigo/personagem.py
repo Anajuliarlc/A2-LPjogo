@@ -8,7 +8,7 @@ class Personagem():
                  altura_tela: int, velocidade: int, imagem_frente: str,
                  imagem_costas: str, imagem_esquerda: str, imagem_direita: str,
                  medo_maximo: int, limite_x: int, limite_y: int):
-        """_summary_
+        """Personagem do jogo
 
         :param posicao: Coordenadas do personagem
         :type posicao: list
@@ -90,38 +90,58 @@ class Personagem():
         """
         self.imagem_atual = pg.image.load(imagem).convert_alpha()
 
-    def mover(self, teclas: dict):
+    def mover(self, teclas: dict, colisao_objeto: list):
         """Move o personagem
 
         :param teclas: Teclas pressionadas
         :type teclas: dict
+        :param colisao_objeto: Lista com os impedimentos de movimento
+        :type colisao_objeto: list
         """
-        if teclas[ListaControles.cima.name] == True and self.posicao[1] >= self.velocidade:
+        if (teclas[ListaControles.cima.name] == True and 
+                self.posicao[1] >= self.velocidade and 
+                ListaControles.cima.name not in colisao_objeto):
+
             self.posicao[1] -= self.velocidade
             self.definir_sprite(self.imagem_costas)
-        elif teclas[ListaControles.baixo.name] == True and self.posicao[1] <= self.limite_y - self.velocidade:
+
+        elif (teclas[ListaControles.baixo.name] == True and 
+                self.posicao[1] <= self.limite_y - self.velocidade and
+                ListaControles.baixo.name not in colisao_objeto):
+
             self.posicao[1] += self.velocidade
             self.definir_sprite(self.imagem_frente)
-        if teclas[ListaControles.esquerda.name] == True and self.posicao[0] >= self.velocidade:
+
+        if (teclas[ListaControles.esquerda.name] == True and 
+                self.posicao[0] >= self.velocidade and
+                ListaControles.esquerda.name not in colisao_objeto):
+
             self.posicao[0] -= self.velocidade
             self.definir_sprite(self.imagem_esquerda)
-        elif teclas[ListaControles.direita.name] == True and self.posicao[0] <= self.limite_x - self.velocidade:
+
+        elif (teclas[ListaControles.direita.name] == True and
+                self.posicao[0] <= self.limite_x - self.velocidade and
+                ListaControles.direita.name not in colisao_objeto):
+
             self.posicao[0] += self.velocidade
             self.definir_sprite(self.imagem_direita)
 
-    def atualizar_personagem(self, mapa: pg.display, teclas: dict, colisao: bool):
+    def atualizar_personagem(self, mapa: pg.display, teclas: dict,
+                                colisao_inimigo: bool, colisao_objeto: list):
         """Atualiza a posição do personagem
 
         :param tela: Tela do jogo
         :type tela: pg.display
         :param teclas: Teclas pressionadas
         :type teclas: dict
-        :param colisao: Indica se houve colisão com algum objeto
-        :type colisao: bool
+        :param colisao_inimigo: Indica se houve colisão com algum objeto
+        :type colisao_inimigo: bool
+        :param colisao_objeto: Lista com os impedimentos de movimento
+        :type colisao_objeto: list
         """
-        self.mover(teclas)
+        self.mover(teclas, colisao_objeto)
         self.lanterna.apagar_mapa(mapa)
         posicao_centralizada = (self.posicao[0] - self.imagem_atual.get_width() // 2,
                                  self.posicao[1] - self.imagem_atual.get_height() // 2)
         mapa.blit(self.imagem_atual, posicao_centralizada)
-        self.medrometro.atualizar_medrometro(mapa, colisao)
+        self.medrometro.atualizar_medrometro(mapa, colisao_inimigo)

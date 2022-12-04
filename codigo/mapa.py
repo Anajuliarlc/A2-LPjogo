@@ -2,6 +2,7 @@ import pygame as pg
 import csv
 import enum
 from inimigos import Inimigos
+from objetos_colisao import ObjetoColisao
 
 class Mapa():
     def __init__(self, lista_tilesets: enum.Enum, tile_size: int):
@@ -17,6 +18,7 @@ class Mapa():
         self.csvs = dict()
         self.dicionario_sprites = dict()
         self.inimigos = Inimigos(tile_size)
+        self.objetos_colisao = ObjetoColisao(tile_size)
 
     @property
     def lista_tilesets(self):
@@ -120,6 +122,8 @@ class Mapa():
         #Se os inimigos ainda não tiverem sido carregados
         if self.inimigos.dicionario_inimigos == dict():
             self.inimigos.criar_dicionario_inimigos(self.dicionario_sprites)
+        if self.objetos_colisao.dicionario_objetos == dict():
+            self.objetos_colisao.criar_dicionario_objetos(self.dicionario_sprites)
 
     def desenhar(self, tela):
         """Desenha os grupos de sprites na tela"""
