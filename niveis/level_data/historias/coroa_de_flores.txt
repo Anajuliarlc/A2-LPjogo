@@ -1,1 +1,5 @@
- “Essa coroa de flores eu fiz na minha sexta primavera, estávamos no parque, eu e as outras crianças do orfanato. Mas como sempre eu estava isolada das outras crianças, então fiz essa coroa de flores para o Doutor Quimera.”
+ “Essa coroa de flores eu fiz na minha sexta 
+ primavera, estávamos no parque, eu e as outras 
+ crianças do orfanato. Mas como sempre eu estava 
+ isolada das outras crianças, então fiz essa 
+ coroa de flores para o Doutor Quimera.”

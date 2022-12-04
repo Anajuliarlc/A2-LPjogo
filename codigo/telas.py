@@ -1,14 +1,16 @@
 from lista_telas import ListaTelas
 from lista_retornos import ListaRetornos
 
+
 class Telas():
     """
     Classe que organiza as telas do jogo
     """
+
     def __init__(self):
         """Organiza as telas que serão exibidas durante o jogo"""
         self.__tela_atual = ListaTelas.tela_inicial.value
-        
+
     @property
     def tela_atual(self):
         """Retorna a tela atual do jogo"""
