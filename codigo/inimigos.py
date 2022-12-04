@@ -2,14 +2,12 @@ import pygame as pg
 from personagem import Personagem
 
 class Inimigos():
-    def __init__(self, tile_size: int):
-        """Define as propriedades de um grupo de inimigos
-
-        :param tile_size: tamanho dos sprites
-        :type tile_size: int
-        """
-        self.tile_size = tile_size
+    def __init__(self):
+        """Define as propriedades de um grupo de inimigos"""
         self.dicionario_inimigos = dict()
+        self.inimigo_atual = dict()
+        self.dicionario_itens = dict()
+        self.item_atual = dict()
 
     def criar_dicionario_inimigos(self, dic_sprites: dict):
         """Verifica quais sprites são de labirintos de inimigos
@@ -23,35 +21,62 @@ class Inimigos():
         indice_ultimo_lab = int(ultimo_lab[-1])
 
         while primeiro <= indice_ultimo_lab:
-            nome = f"lab{primeiro}"
-            self.dicionario_inimigos[nome] = dic_sprites[nome]
+            nome_item = f"item{primeiro}"
+            nome_lab = f"lab{primeiro}"
+            self.dicionario_itens[nome_item] = dic_sprites[nome_item]
+            self.dicionario_inimigos[nome_lab] = dic_sprites[nome_lab]
             primeiro += 1
 
     def atualizar_inimigos(self):
-        """Apaga os inimigos que foram perdidos de vista"""        
-        chaves = list(self.dicionario_inimigos.keys())
-        apagar = chaves[0]
-        del self.dicionario_inimigos[apagar]
+        """Apaga os inimigos que foram perdidos de vista"""
+        if self.inimigo_atual == dict():
+            self.inimigo_atual = self.dicionario_inimigos["lab0"]
+            self.item_atual = self.dicionario_itens["item0"]
+        else:
+            chaves = list(self.dicionario_inimigos.keys())
+            apagar = chaves[0]
+            del self.dicionario_inimigos[apagar]
+            self.inimigo_atual = self.dicionario_inimigos[chaves[1]]
 
-    def verificar_visualizacao(self, personagem: Personagem):
-        """Verifica se o personagem colidiu com algum inimigo
-
+            chaves = list(self.dicionario_itens.keys())
+            apagar = chaves[0]
+            del self.dicionario_itens[apagar]
+            self.item_atual = self.dicionario_itens[chaves[1]]
+    
+    def verificar_visualizacao(self, personagem: Personagem, grupo: pg.sprite.Group):
+        """Verifica se o personagem vê o grupo especificado
         :param personagem: Personagem atual
         :type personagem: Personagem
-        :return: Retorna True se o personagem colidiu com algum inimigo
+        :return: Retorna True se o personagem vê o grupo especificado
         :rtype: bool
         """        
 
         raio_lanterna = personagem.lanterna.raio_lanterna
         p_centro_x = personagem.posicao[0] + personagem.imagem_atual.get_width() // 2
         p_centro_y = personagem.posicao[1] + personagem.imagem_atual.get_height() // 2
-        for grupo_inimigos in self.dicionario_inimigos.values():
-            for inimigo in grupo_inimigos:
-                retangulo = list(inimigo.rect)
-                i_centro_x = retangulo[0] + retangulo[2]
-                i_centro_y = retangulo[1] + retangulo[3]
-                distancia = ((p_centro_x - i_centro_x) ** 2 + (p_centro_y - i_centro_y) ** 2)
-                raio = (raio_lanterna + retangulo[2]//2)**2
-                if distancia <= raio:
-                    return True
+        for inimigo in grupo:
+            retangulo = list(inimigo.rect)
+            i_centro_x = retangulo[0] + retangulo[2]
+            i_centro_y = retangulo[1] + retangulo[3]
+            distancia = ((p_centro_x - i_centro_x) ** 2 + (p_centro_y - i_centro_y) ** 2)
+            raio = (raio_lanterna + retangulo[2]//2)**2
+            if distancia <= raio:
+                return True
 
+    def verificar_visualizacao_inimigos(self, personagem: Personagem):
+        """Verifica se o personagem visualiza algum inimigo
+
+        :return: Retorna True se o personagem visualiza algum inimigo
+        :rtype: bool
+        """        
+        visualisa = self.verificar_visualizacao(personagem, self.inimigo_atual)
+        return visualisa
+
+    def verificar_visualizacao_item(self, personagem: Personagem):
+        """Verifica se o personagem visualiza algum item
+
+        :return: Retorna True se o personagem visualiza algum item
+        :rtype: bool
+        """        
+        visualisa = self.verificar_visualizacao(personagem, self.item_atual)
+        return visualisa

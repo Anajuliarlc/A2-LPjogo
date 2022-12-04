@@ -6,7 +6,7 @@ from mapa import Mapa
 
 import sys
 sys.path.append("../")
-from niveis.level_data.nivel1.lista_tilesets_1 import ListaTilesets1
+from niveis.level_data.nivel0.lista_tilesets_0 import ListaTilesets0
 
 import pygame as pg
 
@@ -21,13 +21,13 @@ class TelaNivel(Tela):
         :type icone: str
         """             
         super().__init__(titulo, icone)
-        self.personagem = Personagem([50, 50], 32, self.largura, self.altura, 5,
+        self.personagem = Personagem([100, 150], 32, self.largura, self.altura, 5,
                                     "niveis/personagem/personagem_f.png",
                                     "niveis/personagem/personagem_c.png",
                                     "niveis/personagem/personagem_e.png",
                                     "niveis/personagem/personagem_d.png",
                                     100, 960, 704)
-        self.mapa = Mapa(ListaTilesets1, 32)
+        self.mapa = Mapa(ListaTilesets0, 32)
 
     def controles(self):
         """Verifica os inputs do usuário e define os controles dessa tela
@@ -86,13 +86,14 @@ class TelaNivel(Tela):
                     return ListaRetornos.sair.value
 
             #Movimentação do personagem
-            colisao_inimigo = self.mapa.inimigos.verificar_visualizacao(self.personagem)
+            visualiza_inimigo = self.mapa.inimigos.verificar_visualizacao_inimigos(self.personagem)
+            visualiza_item = self.mapa.inimigos.verificar_visualizacao_item(self.personagem)
             colisao_objetos = self.mapa.objetos_colisao.verificar_colisao(self.personagem)
-
+            print(visualiza_item)
             #Cor de fundo
             tela.fill((0, 0, 0))
             self.mapa.desenhar(tela)
-            self.personagem.atualizar_personagem(tela, teclas, colisao_inimigo, colisao_objetos)
+            self.personagem.atualizar_personagem(tela, teclas, visualiza_inimigo, colisao_objetos)
             pg.display.update()
 
             relogio.tick(self.fps)
