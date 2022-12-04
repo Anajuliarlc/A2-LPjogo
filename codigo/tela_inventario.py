@@ -14,7 +14,8 @@ class TelaInventario(Tela):
         :param icone: Caminho de acesso do ícone da tela em png
         :type icone: str
         """
-        super().__init__(titulo, icone) 
+         super().__init__(titulo, icone) 
+
 
     def controles(self):
         """Verifica os inputs do usuário e define os controles dessa tela
@@ -119,6 +120,7 @@ def iniciar(self):
             screen.fill((0, 0, 0))
             dicionario_botoes[botao_selecionado].definir_cor_fundo(
                 (255, 255, 255))
+
             botao_doll.desenhar_botao(screen)
             botao_green_book.desenhar_botao(screen)
             botao_heart_scale.desenhar_botao(screen)
@@ -128,7 +130,6 @@ def iniciar(self):
             botao_teapot.desenhar_botao(screen)
             botao_ticket.desenhar_botao(screen)
             botao_wreathe_of_flowers.desenhar_botao(screen)
-
 
             teclas = self.controles()
 
@@ -168,12 +169,18 @@ def iniciar(self):
             elif dicionario_botoes[botao_selecionado] == 7:
                 screen.blit(ticket_scale, (100, 100))
                 clock.tick(7)
+            elif dicionario_botoes[botao_selecionado] == 8:
+                clock.tick(8)
 
-        
+            elif teclas[ListaControles.baixo.name] == True and botao_selecionado < 7:
+                dicionario_botoes[botao_selecionado].definir_cor_fundo(
+                    (239, 216, 237))
+                botao_selecionado += 1
+                clock.tick(8)
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    return "Sair"
+                    return ListaRetornos.sair.name
 
             screen.blit(doll_scale, (800, 475))
             screen.blit(green_book_scale, (800, 475))
@@ -184,11 +191,17 @@ def iniciar(self):
             screen.blit(teapot_scale, (800, 475))
             screen.blit(ticket_scale, (800, 475))
             screen.blit(wreathe_of_flowers_scale, (800, 475))
-            
-
+        
             pg.display.flip()
             pg.display.update()
             clock.tick(self.fps)
 
             
-TelaInventario("Inventário", "niveis/imagens-tilesets/doll.png").iniciar()            
+          
+TelaInventario("Inventário", "niveis/personagem/anyaar.png").iniciar()            
+
+
+
+            
+
+           
