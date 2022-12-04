@@ -23,11 +23,9 @@ class Telas():
 
     def iniciar_telas(self):
         """Inicia o jogo"""
-        running = True
-        volume_atual_mus = 1.0
-        volume_atualsfx = 1.0
+        
         while running:
-            proxima_acao, volume_atual_mus, volume_atualsfx = self.tela_atual.iniciar(volume_atual_mus, volume_atualsfx)
+            proxima_acao = self.tela_atual.iniciar()
 
             if proxima_acao == ListaRetornos.sair.value:
                 running = False

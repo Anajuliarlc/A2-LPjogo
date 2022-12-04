@@ -36,7 +36,7 @@ class TelaMenu(Tela):
 
         return teclas
 
-    def iniciar(self, volume_atual):
+    def iniciar(self):
         """Função que inicia o menu
         """
         # Faz a janela
@@ -79,8 +79,7 @@ class TelaMenu(Tela):
         pg.mixer.init()
         pg.mixer.music.load("sons/menumus.wav")
         pg.mixer.music.play(-1)
-        pg.mixer.music.set_volume(volume_atual)
-        
+        # pg.mixer.music.set_volume(volume_atual)
 
         # Loop principal
         running = True
