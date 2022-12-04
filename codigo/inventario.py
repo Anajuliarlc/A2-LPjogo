@@ -1,3 +1,6 @@
+import pygame as pg
+from lista_controles import ListaControles
+from lista_retornos import ListaRetornos
 
 class Inventario(): 
     """Inventário do jogo"""
@@ -28,6 +31,19 @@ class Inventario():
     @property
     def status(self):
         """Retorna o status do objeto"""
-        return self.__status              
+        return self.__status      
 
+    def AbrirInventario(self):
+        """Abre o inventário do jogo"""
+
+        teclas = self.controles()
+        if teclas ListaControles.inventario.name == True:
+            return ListaRetornos.inventario.name
+
+    def FecharInventario(self):
+        """Fecha o inventário do jogo"""
+
+        teclas = self.controles()
+        if teclas ListaControles.sair.name == True:
+            return ListaRetornos.nivel.name
     

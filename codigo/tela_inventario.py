@@ -35,7 +35,7 @@ class TelaInventario(Tela):
 
         return teclas
 
-def iniciar(self):
+    def iniciar(self):
         screen = pg.display.set_mode((self.largura, self.altura))
 
         # Titulo da janela
@@ -50,65 +50,65 @@ def iniciar(self):
 
         # Definindo cada imagem 
 
-        doll = pg.image.load("niveis/imagens_tilestes/doll.png").convert_alpha()
-        doll_scale = pg.transform.scale(doll_scale, (100, 100))
+        boneca = pg.image.load("niveis/imagens_tilestes/boneca.png").convert_alpha()
+        boneca_scale = pg.transform.scale(boneca, (100, 100))
 
-        green_book = pg.image.load("niveis/imagens_tilestes/green-book.png").convert_alpha()    
-        green_book_scale = pg.transform.scale(green_book, (100, 100))    
+        bule = pg.image.load("niveis/imagens_tilestes/bule.png").convert_alpha()
+        bule_scale = pg.transform.scale(bule, (100, 100))
 
-        heart_scale = pg.image.load("niveis/imagens_tilestes/heart-scale.png").convert_alpha()
-        heart_scale = pg.transform.scale(heart_scale, (100, 100))
+        carta = pg.image.load("niveis/imagens_tilestes/letter.png").convert_alpha()
+        carta_scale = pg.transform.scale(carta, (100, 100))
 
-        letter = pg.image.load("niveis/imagens_tilestes/letter.png").convert_alpha()
-        letter_scale = pg.transform.scale(letter, (100, 100))
-        
-        pearl = pg.image.load("niveis/imagens_tilestes/").convert_alpha()
-        pearl_scale = pg.transform.scale(pearl, (100, 100))
+        coracao_furtacor = pg.image.load("niveis/imagens_tilestes/heart-scale.png").convert_alpha()
+        coracao_furtacor_scale = pg.transform.scale(coracao_furtacor, (100, 100))
 
-        pink_heart = pg.image.load("niveis/imagens_tilestes/pink-heart.png").convert_alpha()
-        pink_heart_scale = pg.transform.scale(pink_heart, (100, 100))
+        coracao_rosa = pg.image.load("niveis/imagens_tilestes/pink-heart.png").convert_alpha()
+        coracao_rosa_scale = pg.transform.scale(coracao_rosa, (100, 100))
 
-        teapot = pg.image.load("niveis/imagens_tilestes/teapot.png").convert_alpha()
-        teapot_scale = pg.transform.scale(teapot, (100, 100))
+        coroa_de_flores = pg.image.load("niveis/imagens_tilestes/coroa-de-flores.png").convert_alpha()  
+        coroa_de_flores_scale = pg.transform.scale(coroa_de_flores, (100, 100))
+
+        livro_verde = pg.image.load("niveis/imagens_tilestes/green-book.png").convert_alpha()    
+        livro_verde_scale = pg.transform.scale(livro_verde, (100, 100))    
+
+        perola = pg.image.load("niveis/imagens_tilestes/pearl.png").convert_alpha()
+        perola_scale = pg.transform.scale(perola, (100, 100))
 
         ticket = pg.image.load("niveis/imagens_tilestes/ticket.png").convert_alpha()          
         ticket_scale = pg.transform.scale(ticket, (100, 100))
 
-        wreathe_of_flowers = pg.image.load("niveis/imagens_tilestes/wreathe-of-flowers.png").convert_alpha()  
-        wreathe_of_flowers_scale = pg.transform.scale(wreathe_of_flowers, (100, 100))
-
         "pos_x, pos_y, largura, altura, cor_fundo, texto, cor_texto, fonte, tamanho_fonte"
-        botao_doll = Botao(430, 250, 200, 80, (239, 216, 237),
-                            "Doll", (0, 0, 0), "Agency FB", 55)
 
-        botao_green_book = Botao(430, 350, 200, 80, (239, 216, 237),
-                           "Green Book", (0, 0, 0), "Agency FB", 55)
+        botao_boneca = Botao(100, 650, 80, 80, (239, 216, 237),
+                            "Boneca", (0, 0, 0), "Agency FB", 35)
 
-        botao_heart_scale = Botao(430, 350, 200, 80, (239, 216, 237),
-                           "Heart Scale", (0, 0, 0), "Agency FB", 55)
+        botao_bule = Botao(100, 550, 80, 80, (239, 216, 237),
+                           "Bule", (0, 0, 0), "Agency FB", 35) 
 
-        botao_letter = Botao(430, 350, 200, 80, (239, 216, 237),
-                           "Letter", (0, 0, 0), "Agency FB", 55)  
+        botao_carta = Botao(100, 450, 80, 80, (239, 216, 237),
+                            "Carta", (0, 0, 0), "Agency FB", 35)
 
-        botao_pearl = Botao(430, 350, 200, 80, (239, 216, 237),
-                           "Pearl", (0, 0, 0), "Agency FB", 55)
+        botao_coracao_furtacor = Botao(100, 350, 80, 80, (239, 216, 237),
+                                       "Coração Furtacor", (0, 0, 0), "Agency FB", 35)  
 
-        botao_pink_heart = Botao(430, 350, 200, 80, (239, 216, 237),
-                           "", (0, 0, 0), "Agency FB", 55)  
+        botao_coracao_rosa = Botao(100, 200, 80, 80, (239, 216, 237),
+                                   "Coração Rosa", (0, 0, 0), "Agency FB", 35)
 
-        botao_teapot = Botao(430, 350, 200, 80, (239, 216, 237),
-                           "", (0, 0, 0), "Agency FB", 55) 
+        botao_coroa_de_flores = Botao(250, 650, 80, 80, (239, 216, 237),
+                                      "Coroa de Flores", (0, 0, 0), "Agency FB", 35)
 
-        botao_ticket = Botao(430, 350, 200, 80, (239, 216, 237),        
-                           "", (0, 0, 0), "Agency FB", 55)    
+        botao_livro_verde = Botao(250, 550, 80, 80, (239, 216, 237),
+                                  "Livro Verde", (0, 0, 0), "Agency FB", 35)
 
-        botao_wreathe_of_flowers = Botao(430, 350, 200, 80, (239, 216, 237),
-                           "Wreathe of Flowers", (0, 0, 0), "Agency FB", 55)         
+        botao_perola = Botao(250, 450, 80, 80, (239, 216, 237),
+                             "Pérola", (0, 0, 0), "Agency FB", 35)
 
-       
-        dicionario_botoes = {0: botao_doll, 1: botao_green_book, 2: botao_heart_scale, 
-                             3: botao_letter, 4: botao_pearl, 5: botao_pink_heart , 
-                             6: botao_teapot, 7: botao_ticket, 8: botao_wreathe_of_flowers}
+        botao_ticket = Botao(250, 350, 80, 80, (239, 216, 237),
+                             "Ticket", (0, 0, 0), "Agency FB", 35)
+    
+        dicionario_botoes = {0: botao_boneca, 1: botao_bule, 2: botao_carta, 3: botao_coracao_furtacor, 
+                             4: botao_coracao_rosa, 5: botao_coroa_de_flores, 6: botao_livro_verde,
+                             7: botao_perola, 8: botao_ticket}
 
         botao_selecionado = 0
    
@@ -121,15 +121,18 @@ def iniciar(self):
             dicionario_botoes[botao_selecionado].definir_cor_fundo(
                 (255, 255, 255))
 
-            botao_doll.desenhar_botao(screen)
-            botao_green_book.desenhar_botao(screen)
-            botao_heart_scale.desenhar_botao(screen)
-            botao_letter.desenhar_botao(screen) 
-            botao_pearl.desenhar_botao(screen)
-            botao_pink_heart.desenhar_botao(screen)
-            botao_teapot.desenhar_botao(screen)
+            # Desenha os botoes
+
+            botao_boneca.desenhar_botao(screen)
+            botao_bule.desenhar_botao(screen)
+            botao_carta.desenhar_botao(screen)
+            botao_coracao_furtacor.desenhar_botao(screen)
+            botao_coracao_rosa.desenhar_botao(screen)
+            botao_coroa_de_flores.desenhar_botao(screen)
+            botao_livro_verde.desenhar_botao(screen)
+            botao_perola.desenhar_botao(screen)
             botao_ticket.desenhar_botao(screen)
-            botao_wreathe_of_flowers.desenhar_botao(screen)
+            
 
             teclas = self.controles()
 
@@ -146,59 +149,59 @@ def iniciar(self):
                 clock.tick(7)
 
             elif dicionario_botoes[botao_selecionado] == 0:
-                screen.blit(doll_scale, (100, 100))
+                screen.blit(boneca_scale, (100, 650))
                 clock.tick(7)
             elif dicionario_botoes[botao_selecionado] == 1:
-                screen.blit(green_book_scale, (100, 100))
+                screen.blit(bule_scale, (100, 550))
                 clock.tick(7)
             elif dicionario_botoes[botao_selecionado] == 2:
-                screen.blit(heart_scale, (100, 100))
+                screen.blit(carta_scale, (100, 450))
                 clock.tick(7)
             elif dicionario_botoes[botao_selecionado] == 3:
-                screen.blit(letter_scale, (100, 100))
+                screen.blit(coracao_furtacor_scale, (100, 350))
                 clock.tick(7)
             elif dicionario_botoes[botao_selecionado] == 4:
-                screen.blit(pearl_scale, (100, 100))
+                screen.blit(coracao_rosa_scale, (100, 250))
                 clock.tick(7)
             elif   dicionario_botoes[botao_selecionado] == 5:
-                screen.blit(pink_heart_scale, (100, 100))
+                screen.blit(coroa_de_flores_scale, (250, 650))
                 clock.tick(7)
             elif dicionario_botoes[botao_selecionado] == 6:
-                screen.blit(teapot_scale, (100, 100))
+                screen.blit(livro_verde_scale, (250, 550))
                 clock.tick(7)
             elif dicionario_botoes[botao_selecionado] == 7:
-                screen.blit(ticket_scale, (100, 100))
+                screen.blit(perola_scale, (250, 450))
                 clock.tick(7)
             elif dicionario_botoes[botao_selecionado] == 8:
-                clock.tick(8)
+                screen.blit(ticket_scale, (250, 350))
+                clock.tick(7)
 
             elif teclas[ListaControles.baixo.name] == True and botao_selecionado < 7:
                 dicionario_botoes[botao_selecionado].definir_cor_fundo(
                     (239, 216, 237))
                 botao_selecionado += 1
-                clock.tick(8)
+                clock.tick(7)
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     return ListaRetornos.sair.name
 
-            screen.blit(doll_scale, (800, 475))
-            screen.blit(green_book_scale, (800, 475))
-            screen.blit(heart_scale, (800, 475))
-            screen.blit(letter_scale, (800, 475))
-            screen.blit(pearl_scale, (800, 475))
-            screen.blit(pink_heart_scale, (800, 475))
-            screen.blit(teapot_scale, (800, 475))
-            screen.blit(ticket_scale, (800, 475))
-            screen.blit(wreathe_of_flowers_scale, (800, 475))
-        
+            screen.blit(boneca_scale, (100, 650))
+            screen.blit(bule_scale, (100, 550))
+            screen.blit(carta_scale, (100, 450))
+            screen.blit(coracao_furtacor_scale, (100, 350))
+            screen.blit(coracao_rosa_scale, (100, 250))
+            screen.blit(coroa_de_flores_scale, (250, 650))
+            screen.blit(livro_verde_scale, (250, 550))
+            screen.blit(perola_scale, (250, 450))
+            screen.blit(ticket_scale, (250, 350))
+
+
             pg.display.flip()
             pg.display.update()
             clock.tick(self.fps)
 
-            
-          
-TelaInventario("Inventário", "niveis/personagem/anyaar.png").iniciar()            
+                       
 
 
 
