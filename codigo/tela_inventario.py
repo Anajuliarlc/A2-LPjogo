@@ -162,6 +162,8 @@ class TelaInventario(Tela):
             dicionario_botoes[botao_selecionado].definir_cor_fundo(
                 (255, 255, 255))
 
+            """O objetivo desta parte é fazer com que o item possa ser liberado - após
+            o jogador pegá-lo no jogo - e imprimí-lo na tela do inventário"""
             if self.liberados >= 1:
                 botao_boneca.desenhar_botao(screen)
                 screen.blit(boneca_scale, (100, 120))
@@ -190,12 +192,13 @@ class TelaInventario(Tela):
                 botao_ticket.desenhar_botao(screen)
                 screen.blit(ticket_scale, (200, 420))
 
+            # Desenha os botões fixos do inventário
             botao_inventario.desenhar_botao(screen)
             botao_historia.desenhar_botao(screen)
             botao_jogo.desenhar_botao(screen)
 
             teclas = self.controles()
-            # Fazendo os botões serem selecionados e colocando o sfx de seleção
+            # Fazendo os botões serem selecionados e colocando o sound effect de seleção
             if teclas[ListaControles.cima.name] == True and botao_selecionado > 0:
                 dicionario_botoes[botao_selecionado].definir_cor_fundo(
                     (239, 216, 237))
@@ -212,12 +215,13 @@ class TelaInventario(Tela):
                 clicksound.play()
                 clock.tick(7)
 
+            # Fazendo o botão de voltar para o jogo funcionar ao apertar a tecla "enter"
             if botao_selecionado == 0:
                 if teclas[ListaControles.enter.name] == True:
                     clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
                     clicksound.play()
                     return ListaRetornos.nivel.name
-
+            # Sincroniza o botão selecionado/objeto com a história, imprimindo o texto correto na tela do inventário
             elif botao_selecionado == 1 and self.liberados >= 1:
                 texto_boneca.desenhar_texto(screen)
             elif botao_selecionado == 2 and self.liberados >= 2:
@@ -237,21 +241,12 @@ class TelaInventario(Tela):
             elif botao_selecionado == 9 and self.liberados >= 9:
                 texto_ticket.desenhar_texto(screen)
 
+            # Fazendo o fechar do jogo funcionar
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     return ListaRetornos.sair.name
 
+            # Atualiza a tela
             pg.display.flip()
             pg.display.update()
             clock.tick(self.fps)
-
-
-"""
-bla = TelaInventario("Inventário", "niveis/personagem/anyaar.png")
-bla.liberar_objeto()
-bla.liberar_objeto()
-bla.liberar_objeto()
-bla.liberar_objeto()
-bla.liberar_objeto()
-bla.liberar_objeto()
-bla.iniciar()"""

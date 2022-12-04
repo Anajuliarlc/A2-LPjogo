@@ -1,7 +1,7 @@
 from tela_nivel import TelaNivel
 from menu import TelaMenu
 from opcoes import TelaOpcoes
-from tela_inventarioana import TelaInventario
+from tela_inventario import TelaInventario
 from enum import Enum
 
 
