@@ -23,7 +23,7 @@ class Telas():
 
     def iniciar_telas(self):
         """Inicia o jogo"""
-        
+        running = True
         while running:
             proxima_acao = self.tela_atual.iniciar()
 

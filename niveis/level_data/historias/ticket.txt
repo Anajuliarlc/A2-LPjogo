@@ -1,1 +1,3 @@
-“Esse é o bilhete de entrada para o parque de diversões que fui uma vez, essa é a lembrança mais divertida que já tive na vida!”
+“Esse é o bilhete de entrada para o parque 
+de diversões que fui uma vez, essa é a 
+lembrança mais divertida que já tive na vida!”

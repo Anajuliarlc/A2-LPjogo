@@ -1,1 +1,14 @@
-“Relacionamentos são estranhos ou complexos. No primeiro caso as interações não passam de certos comportamentos padrões de sociabilidade, perguntar se está tudo bem, oferecer um café, ir a uma festa juntos ou até mesmo conversas sobre um filme ou de como foi o dia. São relações que podem ser confortáveis e agradáveis, até aí você pode pensar que não há nada de estranho, mas o estranho está no fato dessa relação sumir de uma hora para outra e você simplesmente deixar para trás essas simples interações. No segundo caso, são relações que você não quer que ocorra o estranhamento que ocorre no primeiro. Você quer que esse relacionamento sustente contigo seus medos, anseios e vontades. A princípio você não sabe que quer essa relação, mas com a intimidade essa necessidade começa a gritar. Primeiro vem a insegurança de compartilhar seu interior, a incerteza de se expressar corretamente e por fim a insatisfação da incompreensão.“
+“Relacionamentos são estranhos ou complexos. No primeiro
+caso as interações não passam de certos comportamentos
+padrões de sociabilidade. Perguntar se está tudo bem,
+conversas sobre um filme ou de como foi o dia. 
+São relações que podem ser confortáveis. O estranho
+está no fato dessa relação sumir de uma hora para outra
+e simplesmente deixar para trás essas simples interações. 
+No segundo caso, são relações que você não quer que ocorra
+o estranhamento que ocorre no primeiro. Você quer que
+esse relacionamento sustente contigo seus medos, anseios
+e vontades. Primeiro vem a insegurança de compartilhar seu 
+interior, a incerteza de se expressar corretamente e por 
+fim a insatisfação da incompreensão.“
+
