@@ -73,13 +73,23 @@ class Medrometro():
         """Retorna a altura da tela"""
         return self.__altura_tela
 
-    def aumentar_medo(self):
-        """Aumenta o medo do medrometro"""
-        if self.medo_atual <= self.medo_maximo - self.crescimento_medo:
+    def definir_medo(self, colison: bool):
+        """Aumenta o medo do medrometro
+
+        :param colison: Verifica se o personagem vê o monstro
+        :type colison: bool
+        """        
+        if self.medo_atual <= self.medo_maximo - self.crescimento_medo and colison:
             self.medo_atual += self.crescimento_medo
+        elif self.medo_atual >= self.crescimento_medo:
+            self.medo_atual -= self.crescimento_medo
 
     def desenhar_medrometro(self, mapa: pg.surface):
-        """Desenha o medrometro na tela"""
+        """Desenha o medrometro na tela
+
+        :param mapa: Mapa onde será desenhado o medrometro
+        :type mapa: pg.surface
+        """        
         pg.draw.rect(mapa, (255, 255, 255),
                      (self.posicao_medrometro[0],
                         self.posicao_medrometro[1],
@@ -89,12 +99,18 @@ class Medrometro():
         pg.draw.rect(mapa, (255, 0, 0),
                      (self.posicao_medrometro[0] + espaco,
                         self.posicao_medrometro[1] + espaco,
-                        (self.largura_medrometro - espaco * 2) * 
-                        self.medo_atual / self.medo_maximo,
-                        self.altura_medrometro - espaco * 2))
+                        self.largura_medrometro - espaco * 2,
+                        (self.altura_medrometro - espaco * 2) * 
+                        self.medo_atual / self.medo_maximo))
 
-    def atualizar_medrometro(self, mapa: pg.surface):
-        """Atualiza o medrometro na tela"""
-        self.aumentar_medo()       
+    def atualizar_medrometro(self, mapa: pg.surface, colisao: bool):
+        """Atualiza o medrometro na tela
+
+        :param mapa: Mapa onde o medrometro será desenhado
+        :type mapa: pg.surface
+        :param colisao: Verifica se o personagem vê o monstro
+        :type colisao: bool
+        """        
+        self.definir_medo(colisao)    
         self.desenhar_medrometro(mapa)
     
