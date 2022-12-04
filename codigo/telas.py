@@ -29,5 +29,8 @@ class Telas():
 
             if proxima_acao == ListaRetornos.sair.value:
                 running = False
+            elif proxima_acao == ListaRetornos.liberar_item.name:
+                ListaTelas.tela_inventario.value.liberar_objeto()
+                self.tela_atual = ListaTelas.tela_inventario.value
             else:
                 self.tela_atual = ListaTelas[ListaRetornos[proxima_acao].value].value

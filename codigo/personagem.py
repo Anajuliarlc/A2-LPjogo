@@ -51,6 +51,7 @@ class Personagem():
         self.imagem_atual = pg.image.load(self.imagem_frente)
         self.limite_x = limite_x
         self.limite_y = limite_y
+        self.ponto_retorno = self.posicao
     
     @property
     def imagem_frente(self):
@@ -98,6 +99,9 @@ class Personagem():
         :param colisao_objeto: Lista com os impedimentos de movimento
         :type colisao_objeto: list
         """
+        if len(colisao_objeto) == 4:
+            colisao_objeto = [False, False, False, False]
+        
         if (teclas[ListaControles.cima.name] == True and 
                 self.posicao[1] >= self.velocidade and 
                 ListaControles.cima.name not in colisao_objeto):
@@ -144,4 +148,7 @@ class Personagem():
         posicao_centralizada = (self.posicao[0] - self.imagem_atual.get_width() // 2,
                                  self.posicao[1] - self.imagem_atual.get_height() // 2)
         mapa.blit(self.imagem_atual, posicao_centralizada)
+        if self.medrometro.medo_atual >= self.medrometro.medo_maximo:
+            self.posicao = self.ponto_retorno
+            self.medrometro.medo_atual = 0
         self.medrometro.atualizar_medrometro(mapa, colisao_inimigo)

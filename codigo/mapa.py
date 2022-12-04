@@ -3,7 +3,6 @@ import csv
 import enum
 from inimigos import Inimigos
 from objetos_colisao import ObjetosColisao
-from objetos_memoria import ObjetosMemoria
 
 class Mapa():
     def __init__(self, lista_tilesets: enum.Enum, tile_size: int):
@@ -13,7 +12,8 @@ class Mapa():
         :type lista_tilesets: enum.Enum
         :param tile_size: tamanho da imagem
         :type tile_size: int
-        """        
+        """
+        self.carregado = False
         self.__lista_tilesets = lista_tilesets
         self.tile_size = tile_size
         self.csvs = dict()

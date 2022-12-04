@@ -1,5 +1,6 @@
 import pygame as pg
 from personagem import Personagem
+from botao import Botao
 
 class Inimigos():
     def __init__(self):
@@ -80,3 +81,9 @@ class Inimigos():
         """        
         visualisa = self.verificar_visualizacao(personagem, self.item_atual)
         return visualisa
+
+    def pegar_item(self, tela):
+        """Pega o item atual"""
+        botao_item = Botao(1150, 10, 100, 50, (255, 255, 255),
+                             "Pegar?", (0, 0, 0), "Agency FB", 30)
+        botao_item.desenhar_botao(tela)

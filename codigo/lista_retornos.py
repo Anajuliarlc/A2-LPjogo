@@ -7,3 +7,4 @@ class ListaRetornos(Enum):
     opcoes = "tela_opcoes"
     inventario = "tela_inventario"
     nivel = "tela_nivel"
+    liberar_item = "liberar_item"
