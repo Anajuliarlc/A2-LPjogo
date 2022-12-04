@@ -79,7 +79,7 @@ class Medrometro():
         :param colison: Verifica se o personagem vê o monstro
         :type colison: bool
         """        
-        if self.medo_atual <= self.medo_maximo - self.crescimento_medo and colison:
+        if self.medo_atual <= self.medo_maximo and colison:
             self.medo_atual += self.crescimento_medo
         elif self.medo_atual >= self.crescimento_medo:
             self.medo_atual -= self.crescimento_medo

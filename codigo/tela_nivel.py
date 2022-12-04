@@ -6,15 +6,14 @@ from mapa import Mapa
 
 import sys
 sys.path.append("../")
-from niveis.level_data.nivel1.lista_tilesets_1 import ListaTilesets1
+from niveis.level_data.nivel0.lista_tilesets_0 import ListaTilesets0
 
 import pygame as pg
 
 class TelaNivel(Tela):
-    """Tela de um nível"""
 
     def __init__(self, titulo: str, icone: str):
-        """ Cria a tela de um nível
+        """ Tela de um nível
 
         :param titulo: Título da tela
         :type titulo: str
@@ -22,13 +21,13 @@ class TelaNivel(Tela):
         :type icone: str
         """             
         super().__init__(titulo, icone)
-        self.personagem = Personagem([0, 0], 32, self.largura, self.altura, 5,
+        self.personagem = Personagem([100, 150], 32, self.largura, self.altura, 5,
                                     "niveis/personagem/personagem_f.png",
                                     "niveis/personagem/personagem_c.png",
                                     "niveis/personagem/personagem_e.png",
                                     "niveis/personagem/personagem_d.png",
-                                    100, 960, 704)
-        self.mapa = Mapa(ListaTilesets1, 32)
+                                    100, 1120, 768, [100, 150])
+        self.mapa = Mapa(ListaTilesets0, 32)
 
     def controles(self):
         """Verifica os inputs do usuário e define os controles dessa tela
@@ -66,8 +65,11 @@ class TelaNivel(Tela):
         #Tempo de atualização da tela
         relogio = pg.time.Clock()
 
-        self.mapa.carregar_mapa()
-        print(self.mapa.dicionario_sprites)
+        #Se o mapa ainda não tiver sido carregado
+        if self.mapa.carregado == False:
+            self.mapa.carregar_mapa()
+            self.mapa.carregado = True
+
         # Loop principal
         continuar = True
         while continuar:
@@ -87,12 +89,26 @@ class TelaNivel(Tela):
                     return ListaRetornos.sair.value
 
             #Movimentação do personagem
-            colisao = self.mapa.inimigos.verificar_visualizacao(self.personagem)
+            visualiza_inimigo = self.mapa.inimigos.verificar_visualizacao_inimigos(self.personagem)
+            colisao_objetos = self.mapa.objetos_colisao.verificar_colisao(self.personagem)
 
             #Cor de fundo
             tela.fill((0, 0, 0))
             self.mapa.desenhar(tela)
-            self.personagem.atualizar_personagem(tela, teclas, colisao)
+            self.personagem.atualizar_personagem(tela, teclas, visualiza_inimigo, colisao_objetos)
+
+            visualiza_item = self.mapa.inimigos.verificar_visualizacao_item(self.personagem)
+            if visualiza_item == True:
+                self.mapa.inimigos.pegar_item(tela)
+                if teclas[ListaControles.enter.name]:
+                    self.personagem.ponto_retorno = self.personagem.posicao.copy()
+                    relogio.tick(7)
+                    try:
+                        self.mapa.carregar_mapa()
+                        return ListaRetornos.liberar_item.name
+                    except IndexError:
+                        return ListaRetornos.tela_inicial.name
+            
             pg.display.update()
 
             relogio.tick(self.fps)

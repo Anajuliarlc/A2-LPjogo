@@ -2,6 +2,7 @@ import pygame as pg
 import csv
 import enum
 from inimigos import Inimigos
+from objetos_colisao import ObjetosColisao
 
 class Mapa():
     def __init__(self, lista_tilesets: enum.Enum, tile_size: int):
@@ -11,12 +12,15 @@ class Mapa():
         :type lista_tilesets: enum.Enum
         :param tile_size: tamanho da imagem
         :type tile_size: int
-        """        
+        """
+        self.carregado = False
         self.__lista_tilesets = lista_tilesets
         self.tile_size = tile_size
         self.csvs = dict()
         self.dicionario_sprites = dict()
-        self.inimigos = Inimigos(tile_size)
+        self.dicionario_sprites_atuais = dict()
+        self.inimigos = Inimigos()
+        self.objetos_colisao = ObjetosColisao()
 
     @property
     def lista_tilesets(self):
@@ -109,19 +113,33 @@ class Mapa():
 
     def criar_grupos_sprites(self):
         """Cria os grupos de sprites a partir dos csvs"""
+
         for nome_tileset, csv in self.csvs.items():
             grupo = self.agrupar_sprites(csv, nome_tileset)
             self.dicionario_sprites[nome_tileset] = grupo
 
+    def selecionar_sprites_atuais(self):
+        """Seleciona os inimigos e itens do mapa"""
+
+        for nome_tileset, grupo in self.dicionario_sprites.items():
+            if "lab" not in nome_tileset and "item" not in nome_tileset:
+                self.dicionario_sprites_atuais[nome_tileset] = grupo
+        self.dicionario_sprites_atuais["lab"] = self.inimigos.inimigo_atual
+        self.dicionario_sprites_atuais["item"] = self.inimigos.item_atual
+
     def carregar_mapa(self):
         """Carrega o mapa"""
-        self.carregar_csvs()
-        self.criar_grupos_sprites()
-        #Se os inimigos ainda não tiverem sido carregados
-        if self.inimigos.dicionario_inimigos == dict():
+        #Se ainda não tiver carregado o mapa
+        if self.csvs == dict():
+            self.carregar_csvs()
+            self.criar_grupos_sprites()
             self.inimigos.criar_dicionario_inimigos(self.dicionario_sprites)
+
+        self.inimigos.atualizar_inimigos()
+        self.selecionar_sprites_atuais()
+        self.objetos_colisao.criar_dicionario_objetos(self.dicionario_sprites_atuais)
 
     def desenhar(self, tela):
         """Desenha os grupos de sprites na tela"""
-        for grupo in self.dicionario_sprites.values():
+        for grupo in self.dicionario_sprites_atuais.values():
             grupo.draw(tela)
