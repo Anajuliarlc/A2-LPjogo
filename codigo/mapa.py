@@ -14,18 +14,13 @@ class Mapa():
         :type tile_size: int
         """
         self.carregado = False
-        self.__lista_tilesets = lista_tilesets
+        self.lista_tilesets = lista_tilesets
         self.tile_size = tile_size
         self.csvs = dict()
         self.dicionario_sprites = dict()
         self.dicionario_sprites_atuais = dict()
         self.inimigos = Inimigos()
         self.objetos_colisao = ObjetosColisao()
-
-    @property
-    def lista_tilesets(self):
-        """Retorna a lista de tilesets"""
-        return self.__lista_tilesets
 
     def carregar_csvs(self):
         """Lê os arquivos CSV e os armazena em um dicionário"""
@@ -140,6 +135,10 @@ class Mapa():
         self.objetos_colisao.criar_dicionario_objetos(self.dicionario_sprites_atuais)
 
     def desenhar(self, tela):
-        """Desenha os grupos de sprites na tela"""
+        """Desenha os grupos de sprites na tela
+        
+        :param tela: Tela onde os sprites serão desenhados
+        :type tela: pg.Surface
+        """
         for grupo in self.dicionario_sprites_atuais.values():
             grupo.draw(tela)

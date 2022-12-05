@@ -41,49 +41,18 @@ class Personagem():
         self.largura_tela = largura_tela
         self.altura_tela = altura_tela
         self.velocidade = velocidade
-        self.__imagem_frente = imagem_frente
-        self.__imagem_costas = imagem_costas
-        self.__imagem_esquerda = imagem_esquerda
-        self.__imagem_direita = imagem_direita
+        self.imagem_frente = imagem_frente
+        self.imagem_costas = imagem_costas
+        self.imagem_esquerda = imagem_esquerda
+        self.imagem_direita = imagem_direita
 
-        self.__medrometro = Medrometro([1150, 100], 600, 100, 0, medo_maximo,
-                                       1, largura_tela, altura_tela)
-        self.__lanterna = Lanterna(posicao, raio_lanterna,
+        self.medrometro = Medrometro([1150, 100], 600, 100, 0, medo_maximo, 1)
+        self.lanterna = Lanterna(posicao, raio_lanterna,
                                    largura_tela, altura_tela)
         self.imagem_atual = pg.image.load(self.imagem_frente)
         self.limite_x = limite_x
         self.limite_y = limite_y
         self.ponto_retorno = posicao_retorno
-
-    @property
-    def imagem_frente(self):
-        """Retorna a imagem do personagem para frente"""
-        return self.__imagem_frente
-
-    @property
-    def imagem_costas(self):
-        """Retorna a imagem do personagem para costas"""
-        return self.__imagem_costas
-
-    @property
-    def imagem_esquerda(self):
-        """Retorna a imagem do personagem para esquerda"""
-        return self.__imagem_esquerda
-
-    @property
-    def imagem_direita(self):
-        """Retorna a imagem do personagem para direita"""
-        return self.__imagem_direita
-
-    @property
-    def medrometro(self):
-        """Retorna o medrometro do personagem"""
-        return self.__medrometro
-
-    @property
-    def lanterna(self):
-        """Retorna a lanterna do personagem"""
-        return self.__lanterna
 
     def definir_sprite(self, imagem):
         """Define o sprite do personagem
