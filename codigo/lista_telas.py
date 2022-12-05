@@ -9,6 +9,6 @@ class ListaTelas(Enum):
     """Enumeração de telas do jogo"""
     tela_inicial = TelaMenu("Menu", "niveis/personagem/anyaar.png")
     tela_opcoes = TelaOpcoes("Opções", "niveis/personagem/anyaar.png")
-    tela_inventario = TelaInventario(
-        "Inventario", "niveis/personagem/anyaar.png")
+    tela_inventario = TelaInventario( "Inventario", "niveis/personagem/anyaar.png")
+    tela_final = TelaMenu("Fim de jogo", "niveis/personagem/anyaar.png")
     tela_nivel = TelaNivel("Nivel 1", "niveis/personagem/anyaar.png")

@@ -8,3 +8,4 @@ class ListaRetornos(Enum):
     inventario = "tela_inventario"
     nivel = "tela_nivel"
     liberar_item = "liberar_item"
+    tela_final = "tela_final"
