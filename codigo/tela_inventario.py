@@ -40,6 +40,8 @@ class TelaInventario(Tela):
         """Libera o objeto selecionado na tela do inventário, que até então estava bloqueado,
         pois o jogador não encontrou o objeto ainda"""
         self.liberados += 1
+        if self.liberados > 9:
+            raise
 
     def iniciar(self, volume, sfx):
         """Função que inicia a tela do inventário

@@ -84,7 +84,7 @@ class TelaMenu(Tela):
         pg.mixer.init()
         pg.mixer.music.load("sons/menumus.wav")
         pg.mixer.music.play(-1)
-        # pg.mixer.music.set_volume(volume_atual)
+
         clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
         # Loop principal
         running = True
@@ -126,7 +126,7 @@ class TelaMenu(Tela):
                 clicksound.play()
                 clock.tick(7)
                 if botao_selecionado == 0:
-                    # pg.mixer.music.stop()
+                    pg.mixer.music.stop()
                     return ListaRetornos.nivel.name, volume, sfx  # Return para tela de jogo
                 elif botao_selecionado == 1:
                     return ListaRetornos.sair.name, volume, sfx   # Return para sair do jogo

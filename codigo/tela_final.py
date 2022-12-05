@@ -67,5 +67,3 @@ class TelaFinal(Tela):
             pg.display.flip()
             clock.tick(self.fps)
 
-
-TelaFinal("Tela Final", "niveis/personagem/anyaar.png").iniciar(0.5, 0.5)

@@ -3,6 +3,7 @@ from medrometro import Medrometro
 from lista_controles import ListaControles
 import pygame as pg
 
+
 class Personagem():
     def __init__(self, posicao: list, raio_lanterna: int, largura_tela: int,
                  altura_tela: int, velocidade: int, imagem_frente: str,
@@ -35,25 +36,25 @@ class Personagem():
         :type limite_x: int
         :param limite_y: Limite vertical do mapa
         :type limite_y: int
-        """                          
+        """
         self.posicao = posicao
         self.largura_tela = largura_tela
         self.altura_tela = altura_tela
-        self.velocidade = velocidade 
+        self.velocidade = velocidade
         self.__imagem_frente = imagem_frente
         self.__imagem_costas = imagem_costas
         self.__imagem_esquerda = imagem_esquerda
         self.__imagem_direita = imagem_direita
 
         self.__medrometro = Medrometro([1150, 100], 600, 100, 0, medo_maximo,
-                                         1, largura_tela, altura_tela)
+                                       1, largura_tela, altura_tela)
         self.__lanterna = Lanterna(posicao, raio_lanterna,
-                                     largura_tela, altura_tela)
+                                   largura_tela, altura_tela)
         self.imagem_atual = pg.image.load(self.imagem_frente)
         self.limite_x = limite_x
         self.limite_y = limite_y
         self.ponto_retorno = posicao_retorno
-    
+
     @property
     def imagem_frente(self):
         """Retorna a imagem do personagem para frente"""
@@ -86,7 +87,7 @@ class Personagem():
 
     def definir_sprite(self, imagem):
         """Define o sprite do personagem
-        
+
         :param imagem: Caminho da imagem do sprite
         :type imagem: str
         """
@@ -103,22 +104,22 @@ class Personagem():
         # Caso todos estiverem bloqueados, o movimento é livre
         if len(colisao_objeto) == 4:
             colisao_objeto = [False, False, False, False]
-        
-        if (teclas[ListaControles.cima.name] == True and 
-                self.posicao[1] >= self.velocidade and 
+
+        if (teclas[ListaControles.cima.name] == True and
+                self.posicao[1] >= self.velocidade and
                 ListaControles.cima.name not in colisao_objeto):
 
             self.posicao[1] -= self.velocidade
             self.definir_sprite(self.imagem_costas)
 
-        elif (teclas[ListaControles.baixo.name] == True and 
+        elif (teclas[ListaControles.baixo.name] == True and
                 self.posicao[1] <= self.limite_y - self.velocidade and
                 ListaControles.baixo.name not in colisao_objeto):
 
             self.posicao[1] += self.velocidade
             self.definir_sprite(self.imagem_frente)
 
-        if (teclas[ListaControles.esquerda.name] == True and 
+        if (teclas[ListaControles.esquerda.name] == True and
                 self.posicao[0] >= self.velocidade and
                 ListaControles.esquerda.name not in colisao_objeto):
 
@@ -133,7 +134,7 @@ class Personagem():
             self.definir_sprite(self.imagem_direita)
 
     def atualizar_personagem(self, mapa: pg.display, teclas: dict,
-                                colisao_inimigo: bool, colisao_objeto: list):
+                             colisao_inimigo: bool, colisao_objeto: list):
         """Atualiza a posição do personagem
 
         :param tela: Tela do jogo
@@ -145,22 +146,26 @@ class Personagem():
         :param colisao_objeto: Lista com os impedimentos de movimento
         :type colisao_objeto: list
         """
+        pg.mixer.init()
+        clock = pg.time.Clock()
         # Quando o medrometro estiver cheio, o personagem volta para o ultimo ponto salvo
         if self.medrometro.medo_atual >= self.medrometro.medo_maximo:
             self.posicao = self.ponto_retorno.copy()
             self.medrometro.medo_atual = 0
-        
+            clock.tick(1)
+            pg.mixer.Sound("sons/anyascream.mp3").play()
+
         # Move o personagem
         self.mover(teclas, colisao_objeto)
 
-        #Atualiza a lanterna
+        # Atualiza a lanterna
         self.lanterna.posicao = self.posicao.copy()
         self.lanterna.apagar_mapa(mapa)
 
         # Ajusta o sprite na tela
         posicao_centralizada = (self.posicao[0] - self.imagem_atual.get_width() // 2,
-                                 self.posicao[1] - self.imagem_atual.get_height() // 2)
+                                self.posicao[1] - self.imagem_atual.get_height() // 2)
         mapa.blit(self.imagem_atual, posicao_centralizada)
-        
+
         # Atualiza o medrometro
         self.medrometro.atualizar_medrometro(mapa, colisao_inimigo)
