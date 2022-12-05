@@ -38,6 +38,11 @@ class TelaMenu(Tela):
 
     def iniciar(self, volume, sfx):
         """Função que inicia o menu
+
+        :param volume: Volume do jogo
+        :type volume: float
+        :param sfx: Volume dos efeitos sonoros
+        :type sfx: float
         """
         # Faz a janela
         screen = pg.display.set_mode((self.largura, self.altura))
@@ -79,8 +84,8 @@ class TelaMenu(Tela):
         pg.mixer.init()
         pg.mixer.music.load("sons/menumus.wav")
         pg.mixer.music.play(-1)
-        # pg.mixer.music.set_volume(volume_atual)
 
+        clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
         # Loop principal
         running = True
         while running:
@@ -91,6 +96,9 @@ class TelaMenu(Tela):
             # Faz o botão ficar branco quando selecionado
             dicionario_botoes[botao_selecionado].definir_cor_fundo(
                 (255, 255, 255))
+
+            # Cola a imagem da Anya na tela
+            screen.blit(anya_scale, (950, 513))
 
             # Desenha os botões na tela
             botao_jogar.desenhar_botao(screen)
@@ -104,7 +112,6 @@ class TelaMenu(Tela):
                 dicionario_botoes[botao_selecionado].definir_cor_fundo(
                     (239, 216, 237))
                 botao_selecionado -= 1
-                clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
                 clicksound.play()
                 clock.tick(7)
 
@@ -112,16 +119,14 @@ class TelaMenu(Tela):
                 dicionario_botoes[botao_selecionado].definir_cor_fundo(
                     (239, 216, 237))
                 botao_selecionado += 1
-                clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
                 clicksound.play()
                 clock.tick(7)
 
             elif teclas[ListaControles.enter.name] == True:
-                clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
                 clicksound.play()
                 clock.tick(7)
                 if botao_selecionado == 0:
-                    # pg.mixer.music.stop()
+                    pg.mixer.music.stop()
                     return ListaRetornos.nivel.name, volume, sfx  # Return para tela de jogo
                 elif botao_selecionado == 1:
                     return ListaRetornos.sair.name, volume, sfx   # Return para sair do jogo
@@ -131,9 +136,6 @@ class TelaMenu(Tela):
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     return ListaRetornos.sair.name, volume, sfx
-
-            # Cola a imagem da Anya na tela
-            screen.blit(anya_scale, (950, 513))
 
             # Atualiza a tela
             pg.display.flip()

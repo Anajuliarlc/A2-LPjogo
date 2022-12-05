@@ -54,7 +54,7 @@ class TelaNivel(Tela):
 
     def iniciar(self, volume, sfx):
         """Inicia um nível
-        
+
         :param volume: Volume da música
         :type volume: float
         :param sfx: Volume dos efeitos sonoros
@@ -72,11 +72,17 @@ class TelaNivel(Tela):
         # Tempo de atualização da tela
         relogio = pg.time.Clock()
 
+        pg.mixer.init()
+        pg.mixer.music.load("sons/fundomus.mp3")
+        pg.mixer.music.play(-1)
+
         # Se o mapa ainda não tiver sido carregado
         if self.mapa.carregado == False:
             self.mapa.carregar_mapa()
 
-        caixa_inicio = CaixaDeDialogo("niveis/level_data/historias/inicio.txt", 25)
+        caixa_inicio = CaixaDeDialogo(
+            "niveis/level_data/historias/inicio.txt", 25)
+
         # Loop principal
         continuar = True
         while continuar:
@@ -101,7 +107,10 @@ class TelaNivel(Tela):
             colisao_objetos = self.mapa.objetos_colisao.verificar_colisao(
                 self.personagem)
 
-            #Verifica se o jogo já se iniciou
+            if visualiza_inimigo == True:
+                pg.mixer.Sound("sons/monstromus.wav").play()
+
+            # Verifica se o jogo já se iniciou
             if self.mapa.carregado == False:
 
                 tela.fill((0, 0, 0))
@@ -110,7 +119,7 @@ class TelaNivel(Tela):
                 if teclas[ListaControles.enter.name]:
                     relogio.tick(7)
                     self.mapa.carregado = True
-            
+
             # Se o jogo já tiver iniciado, atualiza a tela normalmente
             else:
                 self.mapa.desenhar(tela)
@@ -125,14 +134,15 @@ class TelaNivel(Tela):
                 self.mapa.inimigos.pegar_item(tela)
                 # Adiciona o item ao inventário
                 if teclas[ListaControles.enter.name]:
+                    pg.mixer.Sound("sons/pega_objmus.mp3").play()
                     self.personagem.ponto_retorno = self.personagem.posicao.copy()
                     relogio.tick(7)
                     try:
                         self.mapa.carregar_mapa()
+                    # Se não houver mais mapas, o jogo acaba.
+                    # Portanto mesmo que dê erro, é necessário tentar liberar o item
+                    finally:
                         return ListaRetornos.liberar_item.name, volume, sfx
-                    # Se todos os itens forem coletados, o jogo acaba
-                    except IndexError:
-                        return ListaRetornos.tela_final.name, volume, sfx
 
             pg.display.update()
 
