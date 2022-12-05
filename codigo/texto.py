@@ -2,15 +2,15 @@ import pygame as pg
 
 
 class Texto():
-    def __init__(self, pos_x, pos_y, path, cor_texto, fonte, tamanho_fonte):
+    def __init__(self, pos_x, pos_y, caminho, cor_texto, fonte, tamanho_fonte):
         """Classe que organiza o texto do jogo
 
         :param pos_x: Posição X do texto
         :type pos_x: int
         :param pos_y: Posição Y do texto
         :type pos_y: int
-        :param path: Caminho de acesso do arquivo de texto
-        :type path: str
+        :param caminho: Caminho de acesso do arquivo de texto
+        :type caminho: str
         :param cor_texto: Cor do texto
         :type cor_texto: tuple
         :param fonte: Nome da fonte do texto
@@ -20,7 +20,7 @@ class Texto():
         """
         self.pos_x = pos_x
         self.pos_y = pos_y
-        self.path = path
+        self.caminho = caminho
         self.cor_texto = cor_texto
         self.fonte = fonte
         self.tamanho_fonte = tamanho_fonte
@@ -38,21 +38,22 @@ class Texto():
     def ler_texto(self):
         """Lê o arquivo de texto
         """
-        with open(self.path, 'r', encoding="utf8") as arquivo:
+        with open(self.caminho, 'r', encoding="utf8") as arquivo:
             self.texto = arquivo.read()
 
     def quebrar_texto(self):
         """Quebra o texto toda vez que tem um \n"""
         self.texto_quebrado = self.texto.split("\n")
 
-    # Inicia a fonte do pygame
-    pg.font.init()
+    
 
     def desenhar_texto(self, tela):
         """Desenha o texto na tela
 
         param tela: Tela onde o texto será desenhado
         type tela: pygame.Surface"""
+        # Inicia a fonte do pygame
+        pg.font.init()
         pos_y = self.pos_y
         for linha in self.texto_quebrado:
             fonte = pg.font.SysFont(self.fonte, self.tamanho_fonte)

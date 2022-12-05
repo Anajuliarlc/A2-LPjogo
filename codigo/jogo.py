@@ -9,17 +9,7 @@ class Jogo():
 
     def __init__(self):
         """Organiza as telas que serão exibidas durante o jogo"""
-        self.__tela_atual = ListaTelas.tela_inicial.value
-
-    @property
-    def tela_atual(self):
-        """Retorna a tela atual do jogo"""
-        return self.__tela_atual
-
-    @tela_atual.setter
-    def tela_atual(self, tela):
-        """Define a tela atual do jogo"""
-        self.__tela_atual = tela
+        self.tela_atual = ListaTelas.tela_inicial.value
 
     def finalizar(self, volume_musica, volume_sfx):
         """Finaliza o jogo
