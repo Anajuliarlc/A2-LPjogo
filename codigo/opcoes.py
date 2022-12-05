@@ -34,7 +34,7 @@ class TelaOpcoes(Tela):
 
         return teclas
 
-    def iniciar(self):
+    def iniciar(self, volume, sfx):
         screen = pg.display.set_mode((self.largura, self.altura))
 
     # Titulo da janela
@@ -125,7 +125,7 @@ class TelaOpcoes(Tela):
                 clicksound.play()
                 clock.tick(7)
                 if botao_selecionado == 0:
-                    return ListaRetornos.tela_inicial.value  # Return para tela de jogo
+                    return ListaRetornos.tela_inicial.value, volume, sfx   # Return para tela de jogo
                 elif botao_selecionado == 1:
                     # Return para sair do jogo
                     pg.mixer.music.set_volume(
@@ -139,7 +139,7 @@ class TelaOpcoes(Tela):
                     if pg.mixer.Sound.get_volume() <= 0.2:
                         pg.mixer.Sound.set_volume(0)
                 elif botao_selecionado == 3:
-                    return ListaRetornos.nivel.name
+                    return ListaRetornos.nivel.name, volume, sfx
                 elif botao_selecionado == 4:
                     # Return para sair do jogo
                     pg.mixer.music.set_volume(
@@ -150,11 +150,11 @@ class TelaOpcoes(Tela):
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    return ListaRetornos.sair.name
+                    return ListaRetornos.sair.name, volume, sfx
 
             pg.display.flip()
             pg.display.update()
             clock.tick(self.fps)
 
 
-TelaOpcoes("Opções", "niveis/personagem/anyaar.png").iniciar()
+#TelaOpcoes("Opções", "niveis/personagem/anyaar.png").iniciar()

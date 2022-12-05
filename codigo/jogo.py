@@ -24,8 +24,10 @@ class Jogo():
     def iniciar(self):
         """Inicia o jogo"""
         running = True
+        volume_musica = 1
+        volume_sfx = 1
         while running:
-            proxima_acao = self.tela_atual.iniciar()
+            proxima_acao, volume_musica, volume_sfx = self.tela_atual.iniciar(volume_musica, volume_sfx)
 
             if proxima_acao == ListaRetornos.sair.value:
                 running = False

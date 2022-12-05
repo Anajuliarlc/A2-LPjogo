@@ -1,3 +1,5 @@
+import pygame as pg
+from niveis.level_data.nivel0.lista_tilesets_0 import ListaTilesets0
 from tela import Tela
 from personagem import Personagem
 from lista_controles import ListaControles
@@ -6,9 +8,7 @@ from mapa import Mapa
 
 import sys
 sys.path.append("../")
-from niveis.level_data.nivel0.lista_tilesets_0 import ListaTilesets0
 
-import pygame as pg
 
 class TelaNivel(Tela):
 
@@ -19,14 +19,14 @@ class TelaNivel(Tela):
         :type titulo: str
         :param icone: Caminho de acesso do ícone da tela em png
         :type icone: str
-        """             
+        """
         super().__init__(titulo, icone)
         self.personagem = Personagem([100, 150], 32, self.largura, self.altura, 5,
-                                    "niveis/personagem/personagem_f.png",
-                                    "niveis/personagem/personagem_c.png",
-                                    "niveis/personagem/personagem_e.png",
-                                    "niveis/personagem/personagem_d.png",
-                                    100, 1120, 768, [100, 150])
+                                     "niveis/personagem/personagem_f.png",
+                                     "niveis/personagem/personagem_c.png",
+                                     "niveis/personagem/personagem_e.png",
+                                     "niveis/personagem/personagem_d.png",
+                                     100, 1120, 768, [100, 150])
         self.mapa = Mapa(ListaTilesets0, 32)
 
     def controles(self):
@@ -34,12 +34,12 @@ class TelaNivel(Tela):
 
         :return: Retorna um dicionário com o nome do controle como chave e True ou False como valor
         :rtype: dict
-        """ 
-        #Verficia os inputs do usuário
+        """
+        # Verficia os inputs do usuário
         pg.event.pump()
         pressionados = pg.key.get_pressed()
 
-        #Define os controles dessa tela
+        # Define os controles dessa tela
         teclas = dict()
         teclas[ListaControles.opcoes.name] = pressionados[ListaControles.opcoes.value]
         teclas[ListaControles.inventario.name] = pressionados[ListaControles.inventario.value]
@@ -51,21 +51,21 @@ class TelaNivel(Tela):
 
         return teclas
 
-    def iniciar(self):
+    def iniciar(self, volume, sfx):
         """Inicia um nível"""
         tela = pg.display.set_mode((self.largura, self.altura))
 
-        #Titulo da janela
+        # Titulo da janela
         pg.display.set_caption(self.titulo)
 
-        #Coloca o icone na tela
+        # Coloca o icone na tela
         icone = pg.image.load(self.icone)
         pg.display.set_icon(icone)
 
-        #Tempo de atualização da tela
+        # Tempo de atualização da tela
         relogio = pg.time.Clock()
 
-        #Se o mapa ainda não tiver sido carregado
+        # Se o mapa ainda não tiver sido carregado
         if self.mapa.carregado == False:
             self.mapa.carregar_mapa()
             self.mapa.carregado = True
@@ -73,31 +73,35 @@ class TelaNivel(Tela):
         # Loop principal
         continuar = True
         while continuar:
-            #Verifica os inputs do usuário
+            # Verifica os inputs do usuário
             teclas = self.controles()
 
-            #Acessar outras telas
+            # Acessar outras telas
             if teclas[ListaControles.opcoes.name]:
-                return ListaRetornos.opcoes.name
-            
+                return ListaRetornos.opcoes.name, volume, sfx
+
             elif teclas[ListaControles.inventario.name]:
-                return ListaRetornos.inventario.name
-            
-            #Sair do jogo
+                return ListaRetornos.inventario.name, volume, sfx
+
+            # Sair do jogo
             for evento in pg.event.get():
                 if evento.type == pg.QUIT:
-                    return ListaRetornos.sair.value
+                    return ListaRetornos.sair.value, volume, sfx
 
-            #Movimentação do personagem
-            visualiza_inimigo = self.mapa.inimigos.verificar_visualizacao_inimigos(self.personagem)
-            colisao_objetos = self.mapa.objetos_colisao.verificar_colisao(self.personagem)
+            # Movimentação do personagem
+            visualiza_inimigo = self.mapa.inimigos.verificar_visualizacao_inimigos(
+                self.personagem)
+            colisao_objetos = self.mapa.objetos_colisao.verificar_colisao(
+                self.personagem)
 
-            #Cor de fundo
+            # Cor de fundo
             tela.fill((0, 0, 0))
             self.mapa.desenhar(tela)
-            self.personagem.atualizar_personagem(tela, teclas, visualiza_inimigo, colisao_objetos)
+            self.personagem.atualizar_personagem(
+                tela, teclas, visualiza_inimigo, colisao_objetos)
 
-            visualiza_item = self.mapa.inimigos.verificar_visualizacao_item(self.personagem)
+            visualiza_item = self.mapa.inimigos.verificar_visualizacao_item(
+                self.personagem)
             if visualiza_item == True:
                 self.mapa.inimigos.pegar_item(tela)
                 if teclas[ListaControles.enter.name]:
@@ -105,10 +109,10 @@ class TelaNivel(Tela):
                     relogio.tick(7)
                     try:
                         self.mapa.carregar_mapa()
-                        return ListaRetornos.liberar_item.name
+                        return ListaRetornos.liberar_item.name, volume, sfx
                     except IndexError:
-                        return ListaRetornos.tela_inicial.name
-            
+                        return ListaRetornos.tela_inicial.name, volume, sfx
+
             pg.display.update()
 
             relogio.tick(self.fps)
