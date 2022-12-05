@@ -41,7 +41,7 @@ class TelaInventario(Tela):
         pois o jogador não encontrou o objeto ainda"""
         self.liberados += 1
 
-    def iniciar(self):
+    def iniciar(self, volume, sfx):
         """Função que inicia a tela do inventário
         """
         # Faz a janela
@@ -220,7 +220,7 @@ class TelaInventario(Tela):
                 if teclas[ListaControles.enter.name] == True:
                     clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
                     clicksound.play()
-                    return ListaRetornos.nivel.name
+                    return ListaRetornos.nivel.name, volume, sfx
             # Sincroniza o botão selecionado/objeto com a história, imprimindo o texto correto na tela do inventário
             elif botao_selecionado == 1 and self.liberados >= 1:
                 texto_coroa_flores.desenhar_texto(screen)
@@ -244,7 +244,7 @@ class TelaInventario(Tela):
             # Fazendo o fechar do jogo funcionar
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    return ListaRetornos.sair.name
+                    return ListaRetornos.sair.name, volume, sfx
 
             # Atualiza a tela
             pg.display.flip()

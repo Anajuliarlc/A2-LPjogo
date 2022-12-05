@@ -36,7 +36,7 @@ class TelaMenu(Tela):
 
         return teclas
 
-    def iniciar(self):
+    def iniciar(self, volume, sfx):
         """Função que inicia o menu
         """
         # Faz a janela
@@ -122,15 +122,15 @@ class TelaMenu(Tela):
                 clock.tick(7)
                 if botao_selecionado == 0:
                     # pg.mixer.music.stop()
-                    return ListaRetornos.nivel.name  # Return para tela de jogo
+                    return ListaRetornos.nivel.name, volume, sfx  # Return para tela de jogo
                 elif botao_selecionado == 1:
-                    return ListaRetornos.sair.name  # Return para sair do jogo
+                    return ListaRetornos.sair.name, volume, sfx   # Return para sair do jogo
                 elif botao_selecionado == 2:
-                    return ListaRetornos.opcoes.name   # Return para tela de opções
+                    return ListaRetornos.opcoes.name, volume, sfx    # Return para tela de opções
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    return ListaRetornos.sair.name
+                    return ListaRetornos.sair.name, volume, sfx
 
             # Cola a imagem da Anya na tela
             screen.blit(anya_scale, (950, 513))
