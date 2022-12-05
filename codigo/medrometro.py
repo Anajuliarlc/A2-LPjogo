@@ -1,4 +1,5 @@
 import pygame as pg
+from botao import Botao
 
 class Medrometro():
     def __init__(self, posicao_medrometro: list, altura_medrometro: int,
@@ -32,6 +33,8 @@ class Medrometro():
         self.__largura_tela = largura_tela
         self.__altura_tela = altura_tela
         self.medo_atual = 0
+        self.icone_medrometro = Botao(1150, 10, 100, 50, (239, 216, 237),
+                                        "Medrometro", (0, 0, 0), "Agency FB", 20)
 
     @property
     def posicao_medrometro(self):
@@ -96,12 +99,15 @@ class Medrometro():
                         self.largura_medrometro,
                         self.altura_medrometro), 1)
         espaco = 5
-        pg.draw.rect(mapa, (255, 0, 0),
+        pg.draw.rect(mapa, (239, 216, 237),
                      (self.posicao_medrometro[0] + espaco,
                         self.posicao_medrometro[1] + espaco,
                         self.largura_medrometro - espaco * 2,
                         (self.altura_medrometro - espaco * 2) * 
                         self.medo_atual / self.medo_maximo))
+
+        self.icone_medrometro.desenhar_botao(mapa)
+        
 
     def atualizar_medrometro(self, mapa: pg.surface, colisao: bool):
         """Atualiza o medrometro na tela

@@ -100,6 +100,7 @@ class Personagem():
         :param colisao_objeto: Lista com os impedimentos de movimento
         :type colisao_objeto: list
         """
+        # Caso todos estiverem bloqueados, o movimento é livre
         if len(colisao_objeto) == 4:
             colisao_objeto = [False, False, False, False]
         
@@ -144,16 +145,22 @@ class Personagem():
         :param colisao_objeto: Lista com os impedimentos de movimento
         :type colisao_objeto: list
         """
+        # Quando o medrometro estiver cheio, o personagem volta para o ultimo ponto salvo
         if self.medrometro.medo_atual >= self.medrometro.medo_maximo:
             self.posicao = self.ponto_retorno.copy()
             self.medrometro.medo_atual = 0
         
+        # Move o personagem
         self.mover(teclas, colisao_objeto)
+
+        #Atualiza a lanterna
         self.lanterna.posicao = self.posicao.copy()
         self.lanterna.apagar_mapa(mapa)
 
+        # Ajusta o sprite na tela
         posicao_centralizada = (self.posicao[0] - self.imagem_atual.get_width() // 2,
                                  self.posicao[1] - self.imagem_atual.get_height() // 2)
         mapa.blit(self.imagem_atual, posicao_centralizada)
         
+        # Atualiza o medrometro
         self.medrometro.atualizar_medrometro(mapa, colisao_inimigo)
