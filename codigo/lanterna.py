@@ -15,24 +15,10 @@ class Lanterna():
         :type altura_tela: int
         """             
         self.posicao = posicao
-        self.__raio_lanterna = raio_lanterna
-        self.__largura_tela = largura_tela
-        self.__altura_tela = altura_tela
+        self.raio_lanterna = raio_lanterna
+        self.largura_tela = largura_tela
+        self.altura_tela = altura_tela
 
-    @property
-    def raio_lanterna(self):
-        """Retorna o tamanho da lanterna"""
-        return self.__raio_lanterna
-
-    @property
-    def largura_tela(self):
-        """Retorna a largura da tela"""
-        return self.__largura_tela
-
-    @property
-    def altura_tela(self):
-        """Retorna a altura da tela"""
-        return self.__altura_tela
     
     def apagar_mapa(self, mapa: pg.Surface):
         """Apaga a parte não visível do mapa

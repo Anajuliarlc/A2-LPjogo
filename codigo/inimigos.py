@@ -83,7 +83,11 @@ class Inimigos():
         return visualisa
 
     def pegar_item(self, tela):
-        """Pega o item atual"""
+        """Pega o item atual
+        
+        :param tela: Tela atual
+        :type tela: pg.Surface
+        """
         botao_item = Botao(1150, 10, 100, 50, (255, 255, 255),
                              "Pegar?", (0, 0, 0), "Agency FB", 30)
         botao_item.desenhar_botao(tela)

@@ -1,1 +1,0 @@
-Armazena os arquivos de áudio e texto que serão acessados durante o jogo

@@ -4,7 +4,7 @@ from botao import Botao
 class Medrometro():
     def __init__(self, posicao_medrometro: list, altura_medrometro: int,
                  largura_medrometro: int, medo_minimo: int, medo_maximo: int,
-                 crescimento_medo: int, largura_tela: int, altura_tela: int):
+                 crescimento_medo: int):
         """ Define as propriedades de um medrometro
 
         :param posicao_medrometro: coordenadas do medrometro
@@ -19,62 +19,16 @@ class Medrometro():
         :type medo_maximo: int
         :param crescimento_medo: valor de crescimento de medo
         :type crescimento_medo: int
-        :param largura_tela: largura total da tela
-        :type largura_tela: int
-        :param altura_tela: altura total da tela
-        :type altura_tela: int
         """        
-        self.__posicao_medrometro = posicao_medrometro
-        self.__altura_medrometro = altura_medrometro
-        self.__largura_medrometro = largura_medrometro
-        self.__medo_minimo = medo_minimo
-        self.__medo_maximo = medo_maximo
-        self.__crescimento_medo = crescimento_medo
-        self.__largura_tela = largura_tela
-        self.__altura_tela = altura_tela
+        self.posicao_medrometro = posicao_medrometro
+        self.altura_medrometro = altura_medrometro
+        self.largura_medrometro = largura_medrometro
+        self.medo_minimo = medo_minimo
+        self.medo_maximo = medo_maximo
+        self.crescimento_medo = crescimento_medo
         self.medo_atual = 0
         self.icone_medrometro = Botao(1150, 10, 100, 50, (239, 216, 237),
                                         "Medrometro", (0, 0, 0), "Agency FB", 20)
-
-    @property
-    def posicao_medrometro(self):
-        """Retorna a posição do medrometro"""
-        return self.__posicao_medrometro
-    
-    @property
-    def altura_medrometro(self):
-        """Retorna a altura do medrometro"""
-        return self.__altura_medrometro
-    
-    @property
-    def largura_medrometro(self):
-        """Retorna a largura do medrometro"""
-        return self.__largura_medrometro
-    
-    @property
-    def medo_minimo(self):
-        """Retorna o medo mínimo do medrometro"""
-        return self.__medo_minimo
-    
-    @property
-    def medo_maximo(self):
-        """Retorna o medo máximo do medrometro"""
-        return self.__medo_maximo
-
-    @property
-    def crescimento_medo(self):
-        """Retorna o crescimento do medo do medrometro"""
-        return self.__crescimento_medo
-
-    @property
-    def largura_tela(self):
-        """Retorna a largura da tela"""
-        return self.__largura_tela
-
-    @property
-    def altura_tela(self):
-        """Retorna a altura da tela"""
-        return self.__altura_tela
 
     def definir_medo(self, colison: bool):
         """Aumenta o medo do medrometro
