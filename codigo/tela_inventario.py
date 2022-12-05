@@ -43,6 +43,11 @@ class TelaInventario(Tela):
 
     def iniciar(self, volume, sfx):
         """Função que inicia a tela do inventário
+
+        :param volume: Volume do jogo
+        :type volume: float
+        :param sfx: Volume dos efeitos sonoros
+        :type sfx: float
         """
         # Faz a janela
         screen = pg.display.set_mode((self.largura, self.altura))
@@ -152,6 +157,9 @@ class TelaInventario(Tela):
         quando o jogador pega um objeto no jogo, abrindo no inventário para ver sua história"""
         botao_selecionado = self.liberados
 
+        # define o sfx do botão
+        clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
+
         running = True
         while running:
 
@@ -203,7 +211,6 @@ class TelaInventario(Tela):
                 dicionario_botoes[botao_selecionado].definir_cor_fundo(
                     (239, 216, 237))
                 botao_selecionado -= 1
-                clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
                 clicksound.play()
                 clock.tick(7)
 
@@ -211,16 +218,15 @@ class TelaInventario(Tela):
                 dicionario_botoes[botao_selecionado].definir_cor_fundo(
                     (239, 216, 237))
                 botao_selecionado += 1
-                clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
                 clicksound.play()
                 clock.tick(7)
 
             # Fazendo o botão de voltar para o jogo funcionar ao apertar a tecla "enter"
             if botao_selecionado == 0:
                 if teclas[ListaControles.enter.name] == True:
-                    clicksound = pg.mixer.Sound("sons/menuclickmus.mp3")
                     clicksound.play()
                     return ListaRetornos.nivel.name, volume, sfx
+
             # Sincroniza o botão selecionado/objeto com a história, imprimindo o texto correto na tela do inventário
             elif botao_selecionado == 1 and self.liberados >= 1:
                 texto_coroa_flores.desenhar_texto(screen)
