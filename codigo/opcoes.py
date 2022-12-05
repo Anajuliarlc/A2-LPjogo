@@ -6,15 +6,14 @@ from lista_controles import ListaControles
 
 
 class TelaOpcoes(Tela):
-    """ Cria a tela do menu
+    def __init__(self, titulo, icone):
+        """ Cria a tela do menu
 
         :param titulo: Título da tela
         :type titulo: str
         :param icone: Caminho de acesso do ícone da tela em png
         :type icone: str
         """
-
-    def __init__(self, titulo, icone):
         super().__init__(titulo, icone)
 
     def controles(self):
@@ -78,7 +77,8 @@ class TelaOpcoes(Tela):
                              4: botao_aumentarvolume, 5: botao_aumentarsdf}
 
         botao_selecionado = 0
-        pg.mixer.music.set_volume(1)
+        # pg.mixer.init()
+        # pg.mixer.music.set_volume(1)
         running = True
         while running:
 
@@ -157,4 +157,4 @@ class TelaOpcoes(Tela):
             clock.tick(self.fps)
 
 
-#TelaOpcoes("Opções", "niveis/personagem/anyaar.png").iniciar()
+TelaOpcoes("Opções", "niveis/personagem/anyaar.png").iniciar()

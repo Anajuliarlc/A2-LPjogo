@@ -115,23 +115,23 @@ class TelaInventario(Tela):
         botao_jogo = Botao(100, 40, 150, 60, (239, 216, 237),
                            "Voltar ao jogo", (0, 0, 0), "Agency FB", 30)
         # botões dos objetos
-        botao_boneca = Botao(100, 120, 80, 80, (239, 216, 237),
+        botao_coroa_flores = Botao(100, 120, 80, 80, (239, 216, 237),
+                                   " ", (0, 0, 0), "Agency FB", 55)
+        botao_perola = Botao(100, 220, 80, 80, (239, 216, 237),
                              " ", (0, 0, 0), "Agency FB", 55)
-        botao_bule = Botao(100, 220, 80, 80, (239, 216, 237),
-                           " ", (0, 0, 0), "Agency FB", 55)
-        botao_carta = Botao(100, 320, 80, 80, (239, 216, 237),
-                            " ", (0, 0, 0), "Agency FB", 55)
-        botao_coracao_frutacor = Botao(100, 420, 80, 80, (239, 216, 237),
+        botao_coracao_frutacor = Botao(100, 320, 80, 80, (239, 216, 237),
                                        " ", (0, 0, 0), "Agency FB", 55)
+        botao_carta = Botao(100, 420, 80, 80, (239, 216, 237),
+                            " ", (0, 0, 0), "Agency FB", 55)
         botao_coracao_rosa = Botao(100, 520, 80, 80, (239, 216, 237),
                                    " ", (0, 0, 0), "Agency FB", 55)
-        botao_coroa_flores = Botao(200, 120, 80, 80, (239, 216, 237),
-                                   " ", (0, 0, 0), "Agency FB", 55)
-        botao_livro_verde = Botao(200, 220, 80, 80, (239, 216, 237),
-                                  " ", (0, 0, 0), "Agency FB", 55)
-        botao_perola = Botao(200, 320, 80, 80, (239, 216, 237),
+        botao_ticket = Botao(200, 120, 80, 80, (239, 216, 237),
                              " ", (0, 0, 0), "Agency FB", 55)
-        botao_ticket = Botao(200, 420, 80, 80, (239, 216, 237),
+        botao_bule = Botao(200, 220, 80, 80, (239, 216, 237),
+                           " ", (0, 0, 0), "Agency FB", 55)
+        botao_livro_verde = Botao(200, 320, 80, 80, (239, 216, 237),
+                                  " ", (0, 0, 0), "Agency FB", 55)
+        botao_boneca = Botao(200, 420, 80, 80, (239, 216, 237),
                              " ", (0, 0, 0), "Agency FB", 55)
         # botão de título da tela
         botao_inventario = Botao(580, 20, 200, 80, (239, 216, 237),
@@ -143,10 +143,10 @@ class TelaInventario(Tela):
                                " ", (0, 0, 0), "Agency FB", 55)
 
         # Define os botões que tem a opção de serem selecionados
-        dicionario_botoes = {0: botao_jogo, 1: botao_boneca, 2: botao_bule,
-                             3: botao_carta, 4: botao_coracao_frutacor,
-                             5: botao_coracao_rosa, 6: botao_coroa_flores,
-                             7: botao_livro_verde, 8: botao_perola, 9: botao_ticket}
+        dicionario_botoes = {0: botao_jogo, 1: botao_coroa_flores, 2: botao_perola,
+                             3: botao_coracao_frutacor, 4: botao_carta,
+                             5: botao_coracao_rosa, 6: botao_ticket, 7: botao_bule,
+                             8: botao_livro_verde, 9: botao_boneca}
 
         """O botão selecionado será o último liberado, assim é fácil de linkar
         quando o jogador pega um objeto no jogo, abrindo no inventário para ver sua história"""
@@ -165,32 +165,32 @@ class TelaInventario(Tela):
             """O objetivo desta parte é fazer com que o item possa ser liberado - após
             o jogador pegá-lo no jogo - e imprimí-lo na tela do inventário"""
             if self.liberados >= 1:
-                botao_boneca.desenhar_botao(screen)
-                screen.blit(boneca_scale, (100, 120))
+                botao_coroa_flores.desenhar_botao(screen)
+                screen.blit(coroa_flores_scale, (100, 120))
             if self.liberados >= 2:
-                botao_bule.desenhar_botao(screen)
-                screen.blit(bule_scale, (100, 220))
+                botao_perola.desenhar_botao(screen)
+                screen.blit(perola_scale, (100, 220))
             if self.liberados >= 3:
-                botao_carta.desenhar_botao(screen)
-                screen.blit(carta_scale, (100, 320))
-            if self.liberados >= 4:
                 botao_coracao_frutacor.desenhar_botao(screen)
-                screen.blit(coracao_frutacor_scale, (100, 420))
+                screen.blit(coracao_frutacor_scale, (100, 320))
+            if self.liberados >= 4:
+                botao_carta.desenhar_botao(screen)
+                screen.blit(carta_scale, (100, 420))
             if self.liberados >= 5:
                 botao_coracao_rosa.desenhar_botao(screen)
                 screen.blit(coracao_rosa_scale, (100, 520))
             if self.liberados >= 6:
-                botao_coroa_flores.desenhar_botao(screen)
-                screen.blit(coroa_flores_scale, (200, 120))
-            if self.liberados >= 7:
-                botao_livro_verde.desenhar_botao(screen)
-                screen.blit(livro_verde_scale, (200, 220))
-            if self.liberados >= 8:
-                botao_perola.desenhar_botao(screen)
-                screen.blit(perola_scale, (200, 320))
-            if self.liberados >= 9:
                 botao_ticket.desenhar_botao(screen)
-                screen.blit(ticket_scale, (200, 420))
+                screen.blit(ticket_scale, (200, 120))
+            if self.liberados >= 7:
+                botao_bule.desenhar_botao(screen)
+                screen.blit(bule_scale, (200, 220))
+            if self.liberados >= 8:
+                botao_livro_verde.desenhar_botao(screen)
+                screen.blit(livro_verde_scale, (200, 320))
+            if self.liberados >= 9:
+                botao_boneca.desenhar_botao(screen)
+                screen.blit(boneca_scale, (200, 420))
 
             # Desenha os botões fixos do inventário
             botao_inventario.desenhar_botao(screen)
@@ -223,23 +223,23 @@ class TelaInventario(Tela):
                     return ListaRetornos.nivel.name
             # Sincroniza o botão selecionado/objeto com a história, imprimindo o texto correto na tela do inventário
             elif botao_selecionado == 1 and self.liberados >= 1:
-                texto_boneca.desenhar_texto(screen)
+                texto_coroa_flores.desenhar_texto(screen)
             elif botao_selecionado == 2 and self.liberados >= 2:
-                texto_bule.desenhar_texto(screen)
+                texto_perola.desenhar_texto(screen)
             elif botao_selecionado == 3 and self.liberados >= 3:
-                texto_carta.desenhar_texto(screen)
-            elif botao_selecionado == 4 and self.liberados >= 4:
                 texto_coracao_frutacor.desenhar_texto(screen)
+            elif botao_selecionado == 4 and self.liberados >= 4:
+                texto_carta.desenhar_texto(screen)
             elif botao_selecionado == 5 and self.liberados >= 5:
                 texto_coracao_rosa.desenhar_texto(screen)
             elif botao_selecionado == 6 and self.liberados >= 6:
-                texto_coroa_flores.desenhar_texto(screen)
-            elif botao_selecionado == 7 and self.liberados >= 7:
-                texto_livro_verde.desenhar_texto(screen)
-            elif botao_selecionado == 8 and self.liberados >= 8:
-                texto_perola.desenhar_texto(screen)
-            elif botao_selecionado == 9 and self.liberados >= 9:
                 texto_ticket.desenhar_texto(screen)
+            elif botao_selecionado == 7 and self.liberados >= 7:
+                texto_bule.desenhar_texto(screen)
+            elif botao_selecionado == 8 and self.liberados >= 8:
+                texto_livro_verde.desenhar_texto(screen)
+            elif botao_selecionado == 9 and self.liberados >= 9:
+                texto_boneca.desenhar_texto(screen)
 
             # Fazendo o fechar do jogo funcionar
             for event in pg.event.get():
